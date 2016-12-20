@@ -1,11 +1,9 @@
 package org.gooru.nucleus.dataclass.api.gateway.routes.utils;
 
-import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 
 import org.gooru.nucleus.dataclass.api.gateway.constants.MessageConstants;
 
-import io.netty.handler.codec.http.QueryStringDecoder;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
@@ -22,24 +20,16 @@ public class RouteRequestUtility {
      * and not path matchers. In case of no query parameters send out empty Json
      * object, but don't send null
      */
-
     public JsonObject getBodyForMessage(RoutingContext routingContext) {
         JsonObject httpBody, result = new JsonObject();
         if (routingContext.request().method().name().equals(HttpMethod.POST.name())
             || routingContext.request().method().name().equals(HttpMethod.PUT.name())) {
             httpBody = routingContext.getBodyAsJson();
         } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
-            httpBody = new JsonObject();
-            String uri = routingContext.request().query();
-            if (uri != null) {
-                QueryStringDecoder queryStringDecoder = new QueryStringDecoder(uri, false);
-                Map<String, List<String>> prms = queryStringDecoder.parameters();
-                if (!prms.isEmpty()) {
-                    for (Map.Entry<String, List<String>> entry : prms.entrySet()) {
-                        httpBody.put(entry.getKey(), entry.getValue());
-                    }
-                }
-            }
+          httpBody = new JsonObject();
+          for (Entry<String, String> entry : routingContext.request().params()) {
+            httpBody.put(entry.getKey(), entry.getValue());
+          }
         } else {
             httpBody = new JsonObject();
         }
