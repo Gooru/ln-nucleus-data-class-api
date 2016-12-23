@@ -15,7 +15,8 @@
     private final Message<Object> message;
     private boolean isAuthorized = false;
     private boolean isAnonymous = false;
-  
+    private String userId = null;
+    
     public AuthPrefsMessageBusJsonResponseHolder(Message<Object> message) {
       this.message = message;
       isAnonymousUser();
@@ -46,6 +47,12 @@
     private void isAnonymousUser() {
       JsonObject jsonObject = (JsonObject) message.body();
       String userUId = jsonObject != null ? jsonObject.getString(MessageConstants.MSG_USER_ID) : null;
+      userId = userUId;
       isAnonymous = !(!StringUtil.isNullOrEmpty(userUId) && !userUId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS));
+    }
+
+    @Override
+    public String getUserId() {
+      return userId;
     }
   }

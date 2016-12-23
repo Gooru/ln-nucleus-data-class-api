@@ -58,7 +58,7 @@ public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
                       .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
             } else if (responseHolder.isAuthorized()) {
               LOG.debug("User authenticated, Fowarding request to next route.. ");
-             // routingContext.request().params().add(RouteConstants.USER_ID, responseHolder.getUserId());
+              routingContext.request().params().add(MessageConstants.MSG_USER_ID, responseHolder.getUserId());
               routingContext.next();
             } else {
               routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())

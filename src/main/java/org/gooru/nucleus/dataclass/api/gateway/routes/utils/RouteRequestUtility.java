@@ -2,7 +2,10 @@ package org.gooru.nucleus.dataclass.api.gateway.routes.utils;
 
 import java.util.Map.Entry;
 
+import org.gooru.nucleus.dataclass.api.gateway.constants.HttpConstants;
 import org.gooru.nucleus.dataclass.api.gateway.constants.MessageConstants;
+
+import com.hazelcast.util.StringUtil;
 
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
@@ -34,9 +37,11 @@ public class RouteRequestUtility {
             httpBody = new JsonObject();
         }
         result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
-        result.put(MessageConstants.MSG_KEY_PREFS, (JsonObject) routingContext.get(MessageConstants.MSG_KEY_PREFS));
-        result.put(MessageConstants.MSG_USER_ID, (String) routingContext.get(MessageConstants.MSG_USER_ID));
-        result.put(MessageConstants.MSG_HEADER_TOKEN, (String) routingContext.get(MessageConstants.MSG_HEADER_TOKEN));
+        String sessionToken = routingContext.request().getHeader(HttpConstants.GOORU_SESSION_TOKEN);
+        if (StringUtil.isNullOrEmpty(sessionToken)) {
+          sessionToken = routingContext.request().getParam(HttpConstants.HEADER_SESSION_TOKEN);
+        }
+        result.put(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
         return result;
     }
 }
