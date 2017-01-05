@@ -107,6 +107,13 @@ public final class RouteConstants {
     private static final String STATUS = "status";
     private static final String GRADE = "grade";
     
+    public static final String CLASS_ID = "classId";
+    public static final String COURSE_ID = "courseId";
+    public static final String USER_ID = "userId";
+    public static final String IS_TEACHER = "isTeacher";
+    public static final String IS_STUDENT = "isStudent";
+    public static final String USER_ROLE = "userRole";
+    
     //GetStudentPeersinCourse (getCoursePeers)
     //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/peers
     public static final String COURSE_PEERS_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +

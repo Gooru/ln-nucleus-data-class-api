@@ -12,7 +12,8 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
         List<RouteConfigurator> configurators = new ArrayList<>(32);
         // First the global handler to enable to body reading etc
         configurators.add(new RouteGlobalConfigurator());
-        
+        //Auth configurator should be first.
+        configurators.add(new RouteAuthConfigurator());
         configurators.add(new DataClassApiReadConfigurator());
         internalIterator = configurators.iterator();
     }
