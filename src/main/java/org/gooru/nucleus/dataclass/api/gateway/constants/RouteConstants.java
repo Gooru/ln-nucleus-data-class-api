@@ -106,6 +106,9 @@ public final class RouteConstants {
     private static final String SESSION = "session";
     private static final String STATUS = "status";
     private static final String GRADE = "grade";
+    private static final String USAGE = "usage";
+    private static final String TAXONOMY = "taxonomy";
+
     
     public static final String CLASS_ID = "classId";
     public static final String COURSE_ID = "courseId";
@@ -199,6 +202,11 @@ public final class RouteConstants {
     //Get Teacher Given Grade for Student
     //{REST_END_POINT}/api/nucleus-insights/v2/user/{userUid}/grade    
     public static final String STUDENT_GRADE_BY_TEACHER_GET = API_BASE_ROUTE + ENTITY_USER + SEP + COLON + ID_USER + SEP + GRADE;
+
+    //Get Student Session wise taxonomy report (getSessionTaxonomyReport)
+    //{REST_END_POINT}/api/nucleus-insights/v2/session/{sessionId}/taxonomy/usage
+    public static final String SESSION_TAXONOMY_REPORT_GET = API_BASE_ROUTE +
+        SESSION + SEP + COLON + ID_SESSION + SEP + TAXONOMY + SEP + USAGE;
     
     //********************************************************************************************************************************
 

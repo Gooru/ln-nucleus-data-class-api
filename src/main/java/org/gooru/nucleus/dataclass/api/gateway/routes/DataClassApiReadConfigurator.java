@@ -172,6 +172,16 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
         
+        //Get Session Taxonomy Report        
+        router.get(RouteConstants.SESSION_TAXONOMY_REPORT_GET).handler(routingContext -> {            
+            String sessionId = routingContext.request().getParam(RouteConstants.ID_SESSION);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_SESSION_TAXONOMY_REPORT)
+                .addHeader(RouteConstants.ID_SESSION, sessionId);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
         //All Students Course Performance for Teacher - SAMPLE
         //TODO: Once we have the ROLE Repository in place these TEACHER paths need to be activated.
         /** router.get(RouteConstants.COURSE_STUDENT_PERF_GET).handler(routingContext -> {            
