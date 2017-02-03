@@ -25,6 +25,7 @@ public final class RouteConstants {
     public static final String ID_TX_CODE_ID_LIST = "idList";
     public static final String ID_COUNTRY = "countryId";
     public static final String ID_USER = "userId";
+    public static final String UID_USER = "userUid";
     public static final String ID_EMAIL = "email";
     public static final String CODE_CLASS = "classCode";
     public static final String ID_SESSION = "sessionId";
@@ -106,6 +107,9 @@ public final class RouteConstants {
     private static final String SESSION = "session";
     private static final String STATUS = "status";
     private static final String GRADE = "grade";
+    private static final String USAGE = "usage";
+    private static final String TAXONOMY = "taxonomy";
+
     
     public static final String CLASS_ID = "classId";
     public static final String COURSE_ID = "courseId";
@@ -135,7 +139,7 @@ public final class RouteConstants {
     //GetCurrentLocation (getUserCurrentLocationInLesson)
     //{REST_END_POINT}//api/nucleus-insights/v2/class/{classGooruId}/user/{userUid}/current/location
     public static final String CURRENT_LOC_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
-    		ENTITY_USER + SEP + COLON + ID_USER + SEP + 
+    		ENTITY_USER + SEP + COLON + UID_USER + SEP + 
     		CURRENT + SEP + LOCATION;   		   
     
     
@@ -152,20 +156,27 @@ public final class RouteConstants {
     		ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
     		ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + PERFORMANCE;
     
-    //Get Student Performance In Lesson (getLessonPerformance)
-    //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/performance
-    public static final String LESSON_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+    //Get Students Performance In Lesson (getLessonPerformance)
+    //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/assessment/{assessmentGooruId}/performance
+    public static final String ASSESSMENT_STUDENTS_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
     		ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
     		ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
-    		ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + PERFORMANCE;
+    		ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION+ SEP + PERFORMANCE;
+    
+  //Get Student Performance In Assessment (getAssessmentPerformance)
+    //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/performance
+    public static final String LESSON_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+        ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
+        ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
+        ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + PERFORMANCE;
     
     //Get Student Performance In Collection/Assessment (getCollectionPeformance)
     //{REST_END_POINT}/api/nucleus-insights/v2/{collectionType}/{contentGooruId}/user/{userUid}
-    public static final String COLLECTION_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP +
-    		ENTITY_USER + SEP + COLON + ID_USER;
+    public static final String COLLECTION_STUDENT_SUMMARY_GET = API_BASE_ROUTE + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP +
+    		ENTITY_USER + SEP + COLON + UID_USER;
     
-    public static final String ASSESSMENT_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT + SEP +
-    		ENTITY_USER + SEP + COLON + ID_USER;
+    public static final String ASSESSMENT_STUDENT_SUMMARY_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT + SEP +
+    		ENTITY_USER + SEP + COLON + UID_USER;
     
     //Get Session Status (getSessionStatus)
     //{REST_END_POINT}/insights/api/rest/v2/collection/{contentGooruId}/session/{sessionId}/status
@@ -198,7 +209,12 @@ public final class RouteConstants {
     
     //Get Teacher Given Grade for Student
     //{REST_END_POINT}/api/nucleus-insights/v2/user/{userUid}/grade    
-    public static final String STUDENT_GRADE_BY_TEACHER_GET = API_BASE_ROUTE + ENTITY_USER + SEP + COLON + ID_USER + SEP + GRADE;
+    public static final String STUDENT_GRADE_BY_TEACHER_GET = API_BASE_ROUTE + ENTITY_USER + SEP + COLON + UID_USER + SEP + GRADE;
+
+    //Get Student Session wise taxonomy report (getSessionTaxonomyReport)
+    //{REST_END_POINT}/api/nucleus-insights/v2/session/{sessionId}/taxonomy/usage
+    public static final String SESSION_TAXONOMY_REPORT_GET = API_BASE_ROUTE +
+        SESSION + SEP + COLON + ID_SESSION + SEP + TAXONOMY + SEP + USAGE;
     
     //********************************************************************************************************************************
 
