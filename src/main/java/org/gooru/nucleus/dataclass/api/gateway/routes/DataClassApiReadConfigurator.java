@@ -123,7 +123,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
             String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
-            String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+            String assessmentId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_ASSESSMENT_PERF)
                 .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
