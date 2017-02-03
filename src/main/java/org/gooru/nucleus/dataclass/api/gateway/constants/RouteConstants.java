@@ -161,7 +161,7 @@ public final class RouteConstants {
     public static final String ASSESSMENT_STUDENTS_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
     		ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
     		ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
-    		ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT+ SEP + PERFORMANCE;
+    		ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION+ SEP + PERFORMANCE;
     
   //Get Student Performance In Assessment (getAssessmentPerformance)
     //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/performance
