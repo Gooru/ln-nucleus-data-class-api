@@ -128,7 +128,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_ASSESSMENT_PERF)
                 .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
                 .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_LESSON, lessonId)
-                .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+                .addHeader(RouteConstants.ID_COLLECTION, assessmentId);
             eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
