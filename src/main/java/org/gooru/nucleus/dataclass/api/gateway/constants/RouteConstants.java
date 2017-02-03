@@ -156,19 +156,26 @@ public final class RouteConstants {
     		ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
     		ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + PERFORMANCE;
     
-    //Get Student Performance In Lesson (getLessonPerformance)
-    //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/performance
-    public static final String LESSON_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+    //Get Students Performance In Lesson (getLessonPerformance)
+    //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/assessment/{assessmentGooruId}/performance
+    public static final String ASSESSMENT_STUDENTS_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
     		ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
     		ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
-    		ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + PERFORMANCE;
+    		ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT+ SEP + PERFORMANCE;
+    
+  //Get Student Performance In Assessment (getAssessmentPerformance)
+    //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/performance
+    public static final String LESSON_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+        ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
+        ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
+        ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + PERFORMANCE;
     
     //Get Student Performance In Collection/Assessment (getCollectionPeformance)
     //{REST_END_POINT}/api/nucleus-insights/v2/{collectionType}/{contentGooruId}/user/{userUid}
-    public static final String COLLECTION_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP +
+    public static final String COLLECTION_STUDENT_SUMMARY_GET = API_BASE_ROUTE + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP +
     		ENTITY_USER + SEP + COLON + UID_USER;
     
-    public static final String ASSESSMENT_STUDENT_PERF_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT + SEP +
+    public static final String ASSESSMENT_STUDENT_SUMMARY_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT + SEP +
     		ENTITY_USER + SEP + COLON + UID_USER;
     
     //Get Session Status (getSessionStatus)
