@@ -168,33 +168,21 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
         });
 
         //Get User Session for Assessment        
-        router.get(RouteConstants.USER_ALL_SESSION_GET_FOR_ASSESSMENT).handler(routingContext -> {   
-            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);            
-            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
-            String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
-            String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
+        router.get(RouteConstants.USER_ALL_SESSION_GET_FOR_ASSESSMENT).handler(routingContext -> {            
             String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);            
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_ALL_ASSESSMENT_SESSIONS)
-                .addHeader(RouteConstants.ID_COLLECTION, collectionId)
-                .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
-                .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_LESSON, lessonId);
+                .addHeader(RouteConstants.ID_COLLECTION, collectionId);
             eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
         
         //Get User Session for Collection        
-        router.get(RouteConstants.USER_ALL_SESSION_GET_FOR_COLLECTION).handler(routingContext -> {    
-            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);            
-            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
-            String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
-            String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
+        router.get(RouteConstants.USER_ALL_SESSION_GET_FOR_COLLECTION).handler(routingContext -> {            
             String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);            
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_ALL_COLLECTION_SESSIONS)
-                .addHeader(RouteConstants.ID_COLLECTION, collectionId)
-                .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
-                .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_LESSON, lessonId);
+                .addHeader(RouteConstants.ID_COLLECTION, collectionId);
             eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
