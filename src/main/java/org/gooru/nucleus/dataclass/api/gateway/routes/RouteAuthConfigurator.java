@@ -28,10 +28,15 @@ public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     EventBus eBus = vertx.eventBus();
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
     router.route(RouteConstants.API_AUTH_ROUTE).handler(routingContext -> {
-      String sessionToken = routingContext.request().getHeader(HttpConstants.GOORU_SESSION_TOKEN);
+      String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
+      String sessionToken = authorization != null ? authorization.substring(HttpConstants.TOKEN.length()).trim() : null;
       if (StringUtil.isNullOrEmpty(sessionToken)) {
-        sessionToken = routingContext.request().getParam(HttpConstants.HEADER_SESSION_TOKEN);
+        sessionToken = routingContext.request().getHeader(HttpConstants.GOORU_SESSION_TOKEN);
+        if (StringUtil.isNullOrEmpty(sessionToken)) {
+          sessionToken = routingContext.request().getParam(HttpConstants.HEADER_SESSION_TOKEN);
+        }
       }
+      
       LOG.debug("sessionToken : " + sessionToken);
       // If the session token is null or absent, we send an error to
       // client
