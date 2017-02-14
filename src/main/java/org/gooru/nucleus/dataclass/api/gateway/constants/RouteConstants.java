@@ -105,6 +105,7 @@ public final class RouteConstants {
     private static final String ENTITY_USER = "user";
     private static final String SESSIONS = "sessions";
     private static final String SESSION = "session";
+    private static final String CLASSES = "classes";
     private static final String STATUS = "status";
     private static final String GRADE = "grade";
     private static final String USAGE = "usage";
@@ -216,6 +217,9 @@ public final class RouteConstants {
     public static final String SESSION_TAXONOMY_REPORT_GET = API_BASE_ROUTE +
         SESSION + SEP + COLON + ID_SESSION + SEP + TAXONOMY + SEP + USAGE;
     
+    public static final String ALL_CLASSES_PERFORMANCE = API_BASE_ROUTE +
+            CLASSES + SEP + PERFORMANCE;
+        
     //********************************************************************************************************************************
 
        
