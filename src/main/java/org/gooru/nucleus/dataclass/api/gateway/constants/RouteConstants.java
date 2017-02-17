@@ -217,8 +217,14 @@ public final class RouteConstants {
     public static final String SESSION_TAXONOMY_REPORT_GET = API_BASE_ROUTE +
         SESSION + SEP + COLON + ID_SESSION + SEP + TAXONOMY + SEP + USAGE;
     
+    //Get Student Performance for All Classes
+    //{REST_END_POINT}/api/nucleus-insights/v2/classes/performance
     public static final String ALL_CLASSES_PERFORMANCE = API_BASE_ROUTE +
             CLASSES + SEP + PERFORMANCE;
+    
+    //Get Student Current Location for All Classes
+    public static final String STUDENT_LOCATION_ALL_CLASSES = API_BASE_ROUTE +
+            CLASSES + SEP + LOCATION; 
         
     //********************************************************************************************************************************
 
