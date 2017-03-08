@@ -224,7 +224,18 @@ public final class RouteConstants {
     
     //Get Student Current Location for All Classes
     public static final String STUDENT_LOCATION_ALL_CLASSES = API_BASE_ROUTE +
-            CLASSES + SEP + LOCATION; 
+            CLASSES + SEP + LOCATION;
+    
+    //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)    
+    public static final String STUDENT_PERF_MULTIPLE_ASSESSMENTS = API_BASE_ROUTE +
+            ENTITY_ASSESSMENT + SEP + PERFORMANCE;
+    
+    
+  //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)    
+    public static final String STUDENT_PERF_MULTIPLE_COLLECTIONS = API_BASE_ROUTE +
+            ENTITY_COLLECTION + SEP + PERFORMANCE;
+    
+
         
     //********************************************************************************************************************************
 

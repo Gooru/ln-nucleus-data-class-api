@@ -213,6 +213,22 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
         
+        //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)        
+        router.post(RouteConstants.STUDENT_PERF_MULTIPLE_ASSESSMENTS).handler(routingContext -> {            
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_PERF_MULT_ASSESSMENT);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
+      //Get Student Performance for multiple Collection (@Student/Teacher Dashboard, @DCA)        
+        router.post(RouteConstants.STUDENT_PERF_MULTIPLE_COLLECTIONS).handler(routingContext -> {            
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_PERF_MULT_COLLECTION);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
     }
     
 }
