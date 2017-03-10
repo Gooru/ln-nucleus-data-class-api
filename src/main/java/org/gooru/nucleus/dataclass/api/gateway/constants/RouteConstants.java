@@ -110,6 +110,7 @@ public final class RouteConstants {
     private static final String GRADE = "grade";
     private static final String USAGE = "usage";
     private static final String TAXONOMY = "taxonomy";
+    private static final String STUDY = "study";
 
     
     public static final String CLASS_ID = "classId";
@@ -235,6 +236,11 @@ public final class RouteConstants {
     public static final String STUDENT_PERF_MULTIPLE_COLLECTIONS = API_BASE_ROUTE +
             ENTITY_COLLECTION + SEP + PERFORMANCE;
     
+    public static final String STUDENT_PERF_COURSE_ASSESSMENTS = API_BASE_ROUTE +
+    		STUDY + SEP + ENTITY_ASSESSMENT + SEP + PERFORMANCE;
+
+    public static final String STUDENT_PERF_COURSE_COLLECTION = API_BASE_ROUTE +
+            STUDY + SEP + ENTITY_COLLECTION + SEP + PERFORMANCE;
 
         
     //********************************************************************************************************************************
