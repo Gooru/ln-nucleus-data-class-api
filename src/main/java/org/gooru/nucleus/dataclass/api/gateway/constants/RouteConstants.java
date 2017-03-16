@@ -111,6 +111,7 @@ public final class RouteConstants {
     private static final String USAGE = "usage";
     private static final String TAXONOMY = "taxonomy";
     private static final String STUDY = "study";
+    private static final String ACTIVITY = "activity";
 
     
     public static final String CLASS_ID = "classId";
@@ -228,8 +229,8 @@ public final class RouteConstants {
             CLASSES + SEP + LOCATION;
     
     //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)    
-    public static final String STUDENT_PERF_MULTIPLE_ASSESSMENTS = API_BASE_ROUTE +
-            ENTITY_ASSESSMENT + SEP + PERFORMANCE;
+    public static final String STUDENT_PERF_DAILY_CLASS_ACTIVITY = API_BASE_ROUTE +
+            ENTITY_CLASS + SEP + COLON + CLASS_ID + SEP + ACTIVITY;
     
     
   //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)    
