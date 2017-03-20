@@ -17,6 +17,7 @@ import io.vertx.ext.web.Router;
 
 /**
  * Created by mukul@gooru
+ * Modified by daniel
  */
 
 class DataClassApiReadConfigurator implements RouteConfigurator {
@@ -247,6 +248,65 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
 
+      //Learner Course Perf        
+        router.get(RouteConstants.COURSE_LEARNER_PERF_GET).handler(routingContext -> {            
+            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LEARNER_INDEPENDENT_COURSE_PERF)
+                .addHeader(RouteConstants.ID_COURSE, courseId);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
+        //Learner Unit Perf
+        router.get(RouteConstants.UNIT_LEARNER_PERF_GET).handler(routingContext -> {            
+            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+            String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LEARNER_INDEPENDENT_UNIT_PERF)
+                .addHeader(RouteConstants.ID_COURSE, courseId)
+                .addHeader(RouteConstants.ID_UNIT, unitId);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
+        //Learner Lesson Perf
+        router.get(RouteConstants.LESSON_LEARNER_PERF_GET).handler(routingContext -> {            
+            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+            String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
+            String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LEARNER_INDEPENDENT_LESSON_PERF)
+                .addHeader(RouteConstants.ID_COURSE, courseId)
+                .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_LESSON, lessonId);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
+        //Learner Assessment Perf
+        router.get(RouteConstants.ASSESSMENT_LEARNER_PERF_GET).handler(routingContext -> {            
+            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+            String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
+            String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
+            String assessmentId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LEARNER_INDEPENDENT_ASSESSMENT_PERF)
+                .addHeader(RouteConstants.ID_COURSE, courseId)
+                .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_LESSON, lessonId)
+                .addHeader(RouteConstants.ID_COLLECTION, assessmentId);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
+      //Learner Assessment Perf
+        router.get(RouteConstants.INDEPENDENT_ASSESSMENT_LEARNER_PERF_GET).handler(routingContext -> {            
+            String assessmentId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LEARNER_ASSESSMENT_PERF)
+                .addHeader(RouteConstants.ID_COLLECTION, assessmentId);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
         
     }
     
