@@ -272,7 +272,10 @@ public final class RouteConstants {
       //Get Learner Performance In Lesson (getLessonPerformance)
       //{REST_END_POINT}/api/nucleus-insights/v2//assessment/{assessmentGooruId}/learner/performance
       public static final String INDEPENDENT_ASSESSMENT_LEARNER_PERF_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP + LEARNER + SEP + PERFORMANCE;
-    //********************************************************************************************************************************
+      //Get independent learner courses...
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/courses
+      public static final String GET_INDEPENDENT_LEARNER_COURSES = API_BASE_ROUTE +  LEARNER + SEP + ENTITY_COURSES;
+      //********************************************************************************************************************************
 
        
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
