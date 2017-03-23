@@ -112,7 +112,7 @@ public final class RouteConstants {
     private static final String TAXONOMY = "taxonomy";
     private static final String STUDY = "study";
     private static final String ACTIVITY = "activity";
-
+    private static final String LEARNER = "learner";
     
     public static final String CLASS_ID = "classId";
     public static final String COURSE_ID = "courseId";
@@ -243,8 +243,39 @@ public final class RouteConstants {
     public static final String STUDENT_PERF_COURSE_COLLECTION = API_BASE_ROUTE +
             STUDY + SEP + ENTITY_COLLECTION + SEP + PERFORMANCE;
 
-        
-    //********************************************************************************************************************************
+    // Get Learner Course Performance (getCoursePeformance)    
+    // {REST_END_POINT}/api/nucleus-insights/v2/course/{courseGooruId}/learner/performance
+    public static final String COURSE_LEARNER_PERF_GET = API_BASE_ROUTE +
+        ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + LEARNER + SEP +
+        PERFORMANCE;
+    
+    //Get Learner Performance In Unit (getUnitPeformance)
+    //{REST_END_POINT}/api/nucleus-insights/v2/course/{courseGooruId}/unit/{unitGooruId}/learner/performance
+    public static final String UNIT_LEARNER_PERF_GET = API_BASE_ROUTE +
+        ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
+        ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + LEARNER + SEP + PERFORMANCE;
+    
+    
+    //Get Learner Performance In Assessment (getAssessmentPerformance)
+      //{REST_END_POINT}/api/nucleus-insights/v2/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/learner/performance
+      public static final String LESSON_LEARNER_PERF_GET = API_BASE_ROUTE +
+          ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
+          ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
+          ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + LEARNER + SEP + PERFORMANCE;
+      
+      //Get Learner Performance In Lesson (getLessonPerformance)
+      //{REST_END_POINT}/api/nucleus-insights/v2/course/{courseGooruId}/unit/{unitGooruId}/lesson/{lessonGoouId}/assessment/{assessmentGooruId}/learner/performance
+      public static final String ASSESSMENT_LEARNER_PERF_GET = API_BASE_ROUTE +
+          ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
+          ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
+          ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP + LEARNER + SEP + PERFORMANCE;
+      //Get Learner Performance In Lesson (getLessonPerformance)
+      //{REST_END_POINT}/api/nucleus-insights/v2//assessment/{assessmentGooruId}/learner/performance
+      public static final String INDEPENDENT_ASSESSMENT_LEARNER_PERF_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP + LEARNER + SEP + PERFORMANCE;
+      //Get independent learner courses...
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/courses
+      public static final String GET_INDEPENDENT_LEARNER_COURSES = API_BASE_ROUTE +  LEARNER + SEP + ENTITY_COURSES;
+      //********************************************************************************************************************************
 
        
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
