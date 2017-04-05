@@ -315,6 +315,71 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
         eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
                 reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
+      
+    //Get Independent Learner's Location for all Courses (ClassId = null)
+      router.get(RouteConstants.LEARNER_LOCATION_ALL_COURSES_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_LOCATION_ALL_COURSES);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
+    //Get Independent Learner's Location for all Assessments (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      router.get(RouteConstants.LEARNER_LOCATION_ALL_IND_ASSESSMENTS_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_LOCATION_ALL_IND_ASSESSMENTS);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
+    //Get Independent Learner's Location for all Collections (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      router.get(RouteConstants.LEARNER_LOCATION_ALL_IND_COLLECTIONS_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_LOCATION_ALL_IND_COLLECTIONS);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
+    //Get Independent Learner's Location for all Courses (ClassId = null)
+      router.get(RouteConstants.LEARNER_PERF_ALL_COURSES_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_PERF_ALL_COURSES);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
+    //Get Independent Learner's Location for all Courses (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      router.get(RouteConstants.LEARNER_PERF_ALL_IND_ASSESSMENTS_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_PERF_ALL_IND_ASSESSMENTS);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
+    //Get Independent Learner's Location for all Courses (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      router.get(RouteConstants.LEARNER_PERF_ALL_IND_COLLECTIONS_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_PERF_ALL_IND_COLLECTIONS);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
+      //Get Independent Learner's Performance in Course Collections (ClassId = null)
+      router.get(RouteConstants.LEARNER_PERF_COURSE_COLLECTIONS_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_COURSE_ALL_COLLECTIONS_PERF);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
+      //Get Independent Learner's Performance in Course Collections (ClassId = null)
+      router.get(RouteConstants.LEARNER_PERF_COURSE_ASSESSMENTS_GET).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_COURSE_ALL_ASSESSMENTS_PERF);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+      
     }
     
 }

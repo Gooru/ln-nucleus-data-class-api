@@ -269,12 +269,48 @@ public final class RouteConstants {
           ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
           ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
           ENTITY_LESSON + SEP + COLON + ID_LESSON + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP + LEARNER + SEP + PERFORMANCE;
+      
       //Get Learner Performance In Lesson (getLessonPerformance)
       //{REST_END_POINT}/api/nucleus-insights/v2//assessment/{assessmentGooruId}/learner/performance
       public static final String INDEPENDENT_ASSESSMENT_LEARNER_PERF_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP + LEARNER + SEP + PERFORMANCE;
+      
       //Get independent learner courses...
       //{REST_END_POINT}/api/nucleus-insights/v2/learner/courses
       public static final String GET_INDEPENDENT_LEARNER_COURSES = API_BASE_ROUTE +  LEARNER + SEP + ENTITY_COURSES;
+      
+      //Get Independent Learner's Location for all Courses (ClassId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/courses/location
+      public static final String LEARNER_LOCATION_ALL_COURSES_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COURSES + SEP + LOCATION;
+      
+      //Get Independent Learner's Location for all Assessments (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/assessments/location
+      public static final String LEARNER_LOCATION_ALL_IND_ASSESSMENTS_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_ASSESSMENTS + SEP + LOCATION;
+      
+      //Get Independent Learner's Location for all Collections (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/collections/location
+      public static final String LEARNER_LOCATION_ALL_IND_COLLECTIONS_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COLLECTIONS + SEP + LOCATION;
+      
+      //Get Independent Learner's Performance for all Courses (ClassId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/courses/performance
+      public static final String LEARNER_PERF_ALL_COURSES_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COURSES + SEP + PERFORMANCE;
+      
+      //Get Independent Learner's Performance for all Assessments (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/assessments/performance
+      public static final String LEARNER_PERF_ALL_IND_ASSESSMENTS_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_ASSESSMENTS + SEP + PERFORMANCE;
+      
+      //Get Independent Learner's Performance for all Collections (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/collections/performance
+      public static final String LEARNER_PERF_ALL_IND_COLLECTIONS_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COLLECTIONS + SEP + PERFORMANCE;
+      
+      
+      //Get Independent Learner's Performance for all Collections in a Course (ClassId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/course/collections/performance
+      public static final String LEARNER_PERF_COURSE_COLLECTIONS_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COURSE + SEP + ENTITY_COLLECTIONS + SEP + PERFORMANCE;
+      
+    //Get Independent Learner's Performance for all Collections in a Course (ClassId = null)
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/course/assessments/performance
+      public static final String LEARNER_PERF_COURSE_ASSESSMENTS_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COURSE + SEP + ENTITY_ASSESSMENTS + SEP + PERFORMANCE;
+      
       //********************************************************************************************************************************
 
        
