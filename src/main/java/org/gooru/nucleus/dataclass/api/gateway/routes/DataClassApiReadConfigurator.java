@@ -340,7 +340,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
       
-    //Get Independent Learner's Location for all Courses (ClassId = null)
+    //Get Independent Learner's Performance for all Courses (ClassId = null)
       router.get(RouteConstants.LEARNER_PERF_ALL_COURSES_GET).handler(routingContext -> {
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
                   MessageConstants.MSG_OP_IND_LEARNER_PERF_ALL_COURSES);
@@ -348,7 +348,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
       
-    //Get Independent Learner's Location for all Courses (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+    //Get Independent Learner's Performance for Independent Assessments (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
       router.get(RouteConstants.LEARNER_PERF_ALL_IND_ASSESSMENTS_GET).handler(routingContext -> {
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
                   MessageConstants.MSG_OP_IND_LEARNER_PERF_ALL_IND_ASSESSMENTS);
@@ -356,7 +356,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
       
-    //Get Independent Learner's Location for all Courses (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
+    //Get Independent Learner's Performance for all Courses (ClassId = null, CourseId = null, UnitId = null, LessonId = null)
       router.get(RouteConstants.LEARNER_PERF_ALL_IND_COLLECTIONS_GET).handler(routingContext -> {
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
                   MessageConstants.MSG_OP_IND_LEARNER_PERF_ALL_IND_COLLECTIONS);
