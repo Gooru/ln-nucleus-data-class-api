@@ -380,6 +380,13 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
       
+      //GET LIST OF SUBJECTS STUDIED BY THE USER
+      router.get(RouteConstants.LEARNER_TAXONOMY_SUBJECTS).handler(routingContext -> {
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_IND_LEARNER_TAX_SUBJECTS);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
     }
     
 }

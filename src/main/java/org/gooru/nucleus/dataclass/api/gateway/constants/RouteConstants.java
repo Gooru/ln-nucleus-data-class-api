@@ -311,6 +311,9 @@ public final class RouteConstants {
       //{REST_END_POINT}/api/nucleus-insights/v2/learner/course/assessments/performance
       public static final String LEARNER_PERF_COURSE_ASSESSMENTS_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COURSE + SEP + ENTITY_ASSESSMENTS + SEP + PERFORMANCE;
       
+      //******GET LIST OF SUBJECTS STUDIED BY THE USER*******************************************************************************
+      public static final String LEARNER_TAXONOMY_SUBJECTS = API_BASE_ROUTE + LEARNER + SEP + TAXONOMY + SEP + ENTITY_TX_SUBJECT;
+
       //********************************************************************************************************************************
 
        
