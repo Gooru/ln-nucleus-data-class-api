@@ -387,6 +387,14 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
+      
+      //Get learner courses
+      router.get(RouteConstants.GET_LEARNER_COURSES).handler(routingContext -> {
+        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+                MessageConstants.MSG_OP_LEARNER_COURSES);
+        eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
     }
     
 }
