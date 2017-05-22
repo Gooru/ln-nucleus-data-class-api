@@ -316,7 +316,10 @@ public final class RouteConstants {
 
       //********************************************************************************************************************************
 
-       
+    //Get learner courses...
+      //{REST_END_POINT}/api/nucleus-insights/v2/user/courses
+      public static final String GET_LEARNER_COURSES = API_BASE_ROUTE +  ENTITY_USER + SEP + ENTITY_COURSES;
+        
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
     public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";
     // This is event publisher. It expects full blown event structure which will be relayed to Kafka
