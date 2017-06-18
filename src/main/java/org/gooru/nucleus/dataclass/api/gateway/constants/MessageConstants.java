@@ -186,6 +186,10 @@ public final class MessageConstants {
     public static final String MSG_OP_INDEPENDENT_LEARNER_ASSESSMENT_PERF = "independent.learner.assessment.performance";
     public static final String MSG_OP_INDEPENDENT_LEARNER_INDEPENDENT_ASSESSMENT_PERF = "independent.learner.independent.assessment.performance";
     public static final String MSG_OP_INDEPENDENT_LEARNER_COURSES = "independent.learner.courses";
+
+    public static final String MSG_OP_IND_LEARNER_ALL_LOCATION = "independent.learner.all.location";
+    public static final String MSG_OP_IND_LEARNER_ALL_PERFORMANCE = "independent.learner.all.performance";
+
     public static final String MSG_OP_IND_LEARNER_LOCATION_ALL_COURSES = "independent.learner.all.courses.location";
     public static final String MSG_OP_IND_LEARNER_LOCATION_ALL_IND_ASSESSMENTS = "independent.learner.all.ind.assessments.location";
     public static final String MSG_OP_IND_LEARNER_LOCATION_ALL_IND_COLLECTIONS = "independent.learner.all.ind.collections.location";
@@ -196,6 +200,12 @@ public final class MessageConstants {
     public static final String MSG_OP_IND_LEARNER_COURSE_ALL_ASSESSMENTS_PERF = "independent.learner.course.all.assessments.performance";
     public static final String MSG_OP_IND_LEARNER_TAX_SUBJECTS = "independent.learner.taxonomy.subjects";
     public static final String MSG_OP_LEARNER_COURSES = "learner.courses";
+    
+    //Rubric Grading
+    public static final String MSG_OP_RUBRICS_QUESTIONS_TO_GRADE = "rubric.questions.to.grade";
+    public static final String MSG_OP_RUBRIC_QUESTIONS_STUDENTS_LIST = "rubric.questions.students.list";
+    public static final String MSG_OP_RUBRIC_QUESTIONS_STUDENT_ANSWERS = "rubric.questions.student.answers";
+
 
     private MessageConstants() {
         throw new AssertionError();
