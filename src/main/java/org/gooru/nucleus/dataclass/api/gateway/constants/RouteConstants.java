@@ -120,6 +120,7 @@ public final class RouteConstants {
     private static final String API_VERSION = "v2";
     private static final String API_BASE_ROUTE = "/api/nucleus-insights/" + API_VERSION + '/';
     private static final String API_BASE_ROUTE_FOR_SESSION = "/api/nucleus-insights/rest/" + API_VERSION + '/';
+    private static final String DCA = "dca";
 
     //Rubrics
     private static final String RUBRIC_GRADING_API_VERSION = "v2";
@@ -238,13 +239,8 @@ public final class RouteConstants {
     //Get Student Current Location for All Classes
     public static final String STUDENT_LOCATION_ALL_CLASSES = API_BASE_ROUTE +
             CLASSES + SEP + LOCATION;
-    
-    //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)    
-    public static final String STUDENT_PERF_DAILY_CLASS_ACTIVITY = API_BASE_ROUTE +
-            ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ACTIVITY;
-    
-    
-  //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)    
+          
+    //REMOVE    
     public static final String STUDENT_PERF_MULTIPLE_COLLECTIONS = API_BASE_ROUTE +
             ENTITY_COLLECTION + SEP + PERFORMANCE;
     
@@ -288,7 +284,7 @@ public final class RouteConstants {
       //Get independent learner courses...
       //{REST_END_POINT}/api/nucleus-insights/v2/learner/courses
       public static final String GET_INDEPENDENT_LEARNER_COURSES = API_BASE_ROUTE +  LEARNER + SEP + ENTITY_COURSES;
-      
+            
       //*************************************************************************************************************************************************
       //Redundant - REMOVE
       //Get Independent Learner's Location for all Courses (ClassId = null)
@@ -339,6 +335,26 @@ public final class RouteConstants {
       //Get Independent Learner's Performance for all Courses Standalone Assessments, standalone Collections (ClassId = null)
       //{REST_END_POINT}/api/nucleus-insights/v2/learner/performance
       public static final String INDEPENDENT_LEARNER_PERF_ALL_GET = API_BASE_ROUTE + LEARNER + SEP + PERFORMANCE;
+      
+      //*************** DAILY CLASS ACTIVITY ********************************************************************************
+      
+      //Get Student Performance for multiple Assessment (@Student/Teacher Dashboard, @DCA)    
+      public static final String STUDENT_PERF_DAILY_CLASS_ACTIVITY = API_BASE_ROUTE +
+              ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ACTIVITY;
+      
+      //Get Student Session wise taxonomy report (getSessionTaxonomyReport)
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/session/{sessionId}/taxonomy/usage
+      public static final String DCA_SESSION_TAXONOMY_REPORT_GET = API_BASE_ROUTE + DCA + SEP +
+          SESSION + SEP + COLON + ID_SESSION + SEP + TAXONOMY + SEP + USAGE;
+
+      //Get Student Performance In Collection/Assessment (getCollectionPeformance)
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/{collectionType}/{contentGooruId}/user/{userUid}
+      public static final String DCA_COLLECTION_STUDENT_SUMMARY_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_COLLECTION + SEP + 
+    		  COLON + ID_COLLECTION + SEP + ENTITY_USER + SEP + COLON + ID_USER;
+      
+      public static final String DCA_ASSESSMENT_STUDENT_SUMMARY_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT + SEP +
+      		ENTITY_USER + SEP + COLON + ID_USER;
+
       
       //*************** RUBRICS GRADING********************************************************************************
       
