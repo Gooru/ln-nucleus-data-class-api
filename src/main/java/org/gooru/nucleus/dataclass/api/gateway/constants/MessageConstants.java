@@ -174,8 +174,7 @@ public final class MessageConstants {
     public static final String MSG_OP_ALL_STUDENT_ASSESSMENT_PERF = "all.student.assessment.performance";
     public static final String MSG_OP_SESSION_TAXONOMY_REPORT = "session.taxonomy.report";
     public static final String MSG_OP_ALL_STUDENT_CLASSES_PERF = "all.class.student.performance";
-    public static final String MSG_OP_STUDENT_LOC_ALL_CLASSES = "student.all.classes.location";
-    public static final String MSG_OP_STUDENT_PERF_DAILY_CLASS_ACTIVITY = "student.daily.class.activity.performance";
+    public static final String MSG_OP_STUDENT_LOC_ALL_CLASSES = "student.all.classes.location";    
     public static final String MSG_OP_STUDENT_PERF_MULT_COLLECTION = "student.multiple.collection.performance";
     public static final String MSG_OP_STUDENT_PERF_COURSE_ASSESSMENT = "student.course.assessment.performance";
     public static final String MSG_OP_STUDENT_PERF_COURSE_COLLECTION = "student.course.collection.performance";
@@ -205,6 +204,13 @@ public final class MessageConstants {
     public static final String MSG_OP_RUBRICS_QUESTIONS_TO_GRADE = "rubric.questions.to.grade";
     public static final String MSG_OP_RUBRIC_QUESTIONS_STUDENTS_LIST = "rubric.questions.students.list";
     public static final String MSG_OP_RUBRIC_QUESTIONS_STUDENT_ANSWERS = "rubric.questions.student.answers";
+    
+    //DCA
+    public static final String MSG_OP_DCA_STUDENT_COLLECTION_SUMMARY = "dca.student.collection.summary";
+    public static final String MSG_OP_DCA_STUDENT_ASSESSMENT_SUMMARY = "dca.student.assessment.summary";
+    public static final String MSG_OP_STUDENT_PERF_DAILY_CLASS_ACTIVITY = "student.daily.class.activity.performance";
+    public static final String MSG_OP_DCA_SESSION_TAXONOMY_REPORT = "dca.session.taxonomy.report";
+
 
 
     private MessageConstants() {

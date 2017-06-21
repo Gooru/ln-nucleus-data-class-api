@@ -214,15 +214,6 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
         
-        //Get Student Performance for Daily Class Activity(@Student/Teacher)        
-      router.post(RouteConstants.STUDENT_PERF_DAILY_CLASS_ACTIVITY).handler(routingContext -> {
-        String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_PERF_DAILY_CLASS_ACTIVITY)
-                .addHeader(RouteConstants.ID_CLASS, classId);
-        eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-                reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
-      });
         
       /*//Get Student Performance for multiple Collection (@Student/Teacher Dashboard, @DCA)        
         router.post(RouteConstants.STUDENT_PERF_MULTIPLE_COLLECTIONS).handler(routingContext -> {            
@@ -413,6 +404,50 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                 reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
       
+      //*************** DAILY CLASS ACTIVIY ********************************************************************************
+
+      //Get Student Performance for Daily Class Activity(@Student/Teacher)        
+    router.post(RouteConstants.STUDENT_PERF_DAILY_CLASS_ACTIVITY).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_PERF_DAILY_CLASS_ACTIVITY)
+              .addHeader(RouteConstants.ID_CLASS, classId);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+              reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });  
+    
+      //Get Session Taxonomy Report        
+      router.get(RouteConstants.DCA_SESSION_TAXONOMY_REPORT_GET).handler(routingContext -> {            
+          String sessionId = routingContext.request().getParam(RouteConstants.ID_SESSION);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_SESSION_TAXONOMY_REPORT)
+              .addHeader(RouteConstants.ID_SESSION, sessionId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+      
+      //Collection End Page Summary
+      router.get(RouteConstants.DCA_COLLECTION_STUDENT_SUMMARY_GET).handler(routingContext -> {            
+      	String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);            
+          String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_STUDENT_COLLECTION_SUMMARY)
+              .addHeader(RouteConstants.ID_COLLECTION, collectionId).addHeader(RouteConstants.UID_USER, userId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });      
+      
+      //Assessment End Page Summary
+      router.get(RouteConstants.DCA_ASSESSMENT_STUDENT_SUMMARY_GET).handler(routingContext -> {            
+      	String collectionId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);            
+          String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_STUDENT_ASSESSMENT_SUMMARY)
+              .addHeader(RouteConstants.ID_COLLECTION, collectionId).addHeader(RouteConstants.UID_USER, userId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+      
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading
@@ -446,6 +481,8 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });      
+      
+    //***************************************************************************************************************************
 
     }
     
