@@ -397,12 +397,33 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
         });
       
       //Get learner courses
-      router.get(RouteConstants.GET_LEARNER_COURSES).handler(routingContext -> {
+      router.get(RouteConstants.LEARNER_COURSES_GET).handler(routingContext -> {
         DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
                 MessageConstants.MSG_OP_LEARNER_COURSES);
         eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
                 reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
+      
+      //Independent Learner Current Location in Course Map        
+      router.get(RouteConstants.INDEPENDENT_LEARNER_CURRENT_LOC_GET).handler(routingContext -> {            
+          String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+          String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_IND_LEARNER_CURRENT_LOC)
+              .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_USER, userId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+      
+      //Independent Learner Get All Courses Performance       
+      router.post(RouteConstants.INDEPENDENT_LEARNER_PERF_ALL_COURSES).handler(routingContext -> {            
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_IND_LEARNER_ALL_COURSES_PERF);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+
+
       
       //*************** DAILY CLASS ACTIVIY ********************************************************************************
 
