@@ -326,7 +326,7 @@ public final class RouteConstants {
 
     //Get learner courses...
       //{REST_END_POINT}/api/nucleus-insights/v2/user/courses
-      public static final String GET_LEARNER_COURSES = API_BASE_ROUTE +  ENTITY_USER + SEP + ENTITY_COURSES;
+      public static final String LEARNER_COURSES_GET = API_BASE_ROUTE +  ENTITY_USER + SEP + ENTITY_COURSES;
       
       //Get Independent Learner's Location for all Courses, Standalone Assessments, standalone Collections (ClassId = null)
       //{REST_END_POINT}/api/nucleus-insights/v2/learner/location
@@ -335,6 +335,21 @@ public final class RouteConstants {
       //Get Independent Learner's Performance for all Courses Standalone Assessments, standalone Collections (ClassId = null)
       //{REST_END_POINT}/api/nucleus-insights/v2/learner/performance
       public static final String INDEPENDENT_LEARNER_PERF_ALL_GET = API_BASE_ROUTE + LEARNER + SEP + PERFORMANCE;
+      
+      //***********************************************************************************************
+
+      //Get Independent Learner Performance for All Courses
+      //{REST_END_POINT}/api/nucleus-insights/v2/courses/learner/performance
+      public static final String INDEPENDENT_LEARNER_PERF_ALL_COURSES = API_BASE_ROUTE +
+              ENTITY_COURSES + SEP + LEARNER + SEP + PERFORMANCE;
+      
+      //Get Independent Learner Current Location in Course
+      //{REST_END_POINT}//api/nucleus-insights/v2/course/{courseId}/user/{userId}/learner/current/location
+      public static final String INDEPENDENT_LEARNER_CURRENT_LOC_GET = API_BASE_ROUTE + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP +
+      		ENTITY_USER + SEP + COLON + ID_USER + SEP + LEARNER + SEP +
+      		CURRENT + SEP + LOCATION;   		   
+
+   
       
       //*************** DAILY CLASS ACTIVITY ********************************************************************************
       
