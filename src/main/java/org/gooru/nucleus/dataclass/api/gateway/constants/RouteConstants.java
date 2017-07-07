@@ -294,12 +294,12 @@ public final class RouteConstants {
       		LEARNER + SEP + COLON + ID_USER;
       
       //GET ALL USER SESSIONS
-      //{REST_END_POINT}/insights/api/v2/{collectionType}/{contentGooruId}/learner/sessions    
-      public static final String INDEPENDENT_LEARNER_ALL_SESSION_FOR_ASSESSMENT_GET = API_BASE_ROUTE + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP +
-      		 LEARNER + SEP + SESSIONS;
+      //{REST_END_POINT}/insights/api/v2/learner/{collectionType}/{contentGooruId}/sessions    
+      public static final String INDEPENDENT_LEARNER_ALL_SESSION_FOR_ASSESSMENT_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION 
+      		  + SEP + SESSIONS;
       
-      public static final String INDEPENDENT_LEARNER_ALL_SESSION_FOR_COLLECTION_GET = API_BASE_ROUTE + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP +
-    		  LEARNER + SEP + SESSIONS;
+      public static final String INDEPENDENT_LEARNER_ALL_SESSION_FOR_COLLECTION_GET = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION
+    		  + SEP + SESSIONS;
             
       //*************************************************************************************************************************************************
       //Redundant - REMOVE
