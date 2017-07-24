@@ -108,6 +108,8 @@ public final class RouteConstants {
     private static final String STUDY = "study";
     private static final String ACTIVITY = "activity";
     private static final String LEARNER = "learner";
+    private static final String RUBRICS = "rubrics";
+    
     
 //    public static final String CLASS_ID = "classId";
 //    public static final String COURSE_ID = "courseId";
@@ -123,8 +125,8 @@ public final class RouteConstants {
     private static final String DCA = "dca";
 
     //Rubrics
-    private static final String RUBRIC_GRADING_API_VERSION = "v2";
-    private static final String RUBRIC_GRADING_API_BASE_ROUTE = "/api/rubric-grading/" + RUBRIC_GRADING_API_VERSION + SEP;
+//    private static final String RUBRIC_GRADING_API_VERSION = "v2";
+//    private static final String RUBRIC_GRADING_API_BASE_ROUTE = "/api/rubric-grading/" + RUBRIC_GRADING_API_VERSION + SEP;
       
     public static final String QUE_ID = "question_id";
     public static final String STUDENT_ID = "student_id";
@@ -390,30 +392,20 @@ public final class RouteConstants {
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading
-      //{REST_END_POINT}/api/rubric-grading/v2/questions
-      public static final String RUBRICS_QUESTIONS_TO_GRADE_GET = RUBRIC_GRADING_API_BASE_ROUTE + ENTITY_QUESTIONS;
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions
+      public static final String RUBRICS_QUESTIONS_TO_GRADE_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_QUESTIONS;
       
       //Get list of Students for a Question to be graded
-      //{REST_END_POINT}/api/rubric-grading/v2/questions/{question_id}/students
-      public static final String RUBRIC_QUESTION_TO_GRADE_LIST_STUDENTS_GET = RUBRIC_GRADING_API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + QUE_ID
-    		  + SEP + ENTITY_STUDENTS;
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions/{question_id}/students
+      public static final String RUBRIC_QUESTION_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + RUBRICS + SEP + 
+    		  ENTITY_QUESTIONS + SEP + COLON + QUE_ID + SEP + ENTITY_STUDENTS;
       
       //Get Answer for Rubric Grading
-      //{REST_END_POINT}/api/rubric-grading/v2/questions/{question_id}/students/{student_id}/answers
-      public static final String RUBRIC_QUESTION_STUDENT_ANSWERS_GET = RUBRIC_GRADING_API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + QUE_ID
-    		  + SEP + ENTITY_STUDENTS + SEP + COLON + STUDENT_ID + SEP + ENTITY_ANSWERS;
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions/{question_id}/students/{student_id}/answers
+      public static final String RUBRIC_QUESTION_STUDENT_ANSWERS_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_QUESTIONS
+    		  + SEP + COLON + QUE_ID + SEP + ENTITY_STUDENTS + SEP + COLON + STUDENT_ID + SEP + ENTITY_ANSWERS;
 
       //*************** RUBRICS GRADING********************************************************************************
-      
-    public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
-    public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";
-    // This is event publisher. It expects full blown event structure which will be relayed to Kafka
-    public static final String EP_INTERNAL_EVENT = "/api/internal/v1/events";
-    // This is event processor. It provides a JSON Object as request which has two parts.
-    // One mandatory part is <event> this is processed as other events from the message bus
-    // Second optional part is <context> which can provide additional information like email should be sent or not
-    // Note that difference between original message on message bus and this is the presence of op name
-    public static final String EP_INTERNAL_EVENT_PROCESSOR = "/api/internal/v1/eventprocessor";
 
     private RouteConstants() {
         throw new AssertionError();

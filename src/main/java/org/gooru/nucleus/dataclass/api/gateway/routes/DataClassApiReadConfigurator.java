@@ -513,7 +513,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading
-      //{REST_END_POINT}/api/rubric-grading/v2/questions
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions
       router.get(RouteConstants.RUBRICS_QUESTIONS_TO_GRADE_GET).handler(routingContext -> {
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
                   MessageConstants.MSG_OP_RUBRICS_QUESTIONS_TO_GRADE);
@@ -522,7 +522,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
         });
       
       //Get list of Students for a Question to be graded
-      //{REST_END_POINT}/api/rubric-grading/v2/questions/{question_id}/students        
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions/{question_id}/students        
       router.get(RouteConstants.RUBRIC_QUESTION_TO_GRADE_LIST_STUDENTS_GET).handler(routingContext -> {            
           String question_id = routingContext.request().getParam(RouteConstants.QUE_ID);
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
@@ -533,7 +533,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
       });
 
       //Get Answer for Rubric Grading
-      //{REST_END_POINT}/api/rubric-grading/v2/questions/{question_id}/students/{student_id}/answers
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions/{question_id}/students/{student_id}/answers
       router.get(RouteConstants.RUBRIC_QUESTION_STUDENT_ANSWERS_GET).handler(routingContext -> {            
           String question_id = routingContext.request().getParam(RouteConstants.QUE_ID);
           String student_id = routingContext.request().getParam(RouteConstants.STUDENT_ID);
