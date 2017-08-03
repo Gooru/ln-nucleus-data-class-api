@@ -28,6 +28,9 @@ public class RouteRequestUtility {
         if (routingContext.request().method().name().equals(HttpMethod.POST.name())
             || routingContext.request().method().name().equals(HttpMethod.PUT.name())) {
             httpBody = routingContext.getBodyAsJson();
+            for (Entry<String, String> entry : routingContext.request().params()) {
+              httpBody.put(entry.getKey(), entry.getValue());
+            }
         } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
           httpBody = new JsonObject();
           for (Entry<String, String> entry : routingContext.request().params()) {
@@ -37,9 +40,13 @@ public class RouteRequestUtility {
             httpBody = new JsonObject();
         }
         result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
-        String sessionToken = routingContext.request().getHeader(HttpConstants.GOORU_SESSION_TOKEN);
+        String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
+        String sessionToken = authorization != null ? authorization.substring(HttpConstants.TOKEN.length()).trim() : null;
         if (StringUtil.isNullOrEmpty(sessionToken)) {
-          sessionToken = routingContext.request().getParam(HttpConstants.HEADER_SESSION_TOKEN);
+          sessionToken = routingContext.request().getHeader(HttpConstants.GOORU_SESSION_TOKEN);
+          if (StringUtil.isNullOrEmpty(sessionToken)) {
+            sessionToken = routingContext.request().getParam(HttpConstants.HEADER_SESSION_TOKEN);
+          }
         }
         result.put(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
         return result;
