@@ -30,6 +30,10 @@ public final class RouteConstants {
     public static final String CODE_CLASS = "classCode";
     public static final String ID_SESSION = "sessionId";
 
+    public static final String START_DATE = "startDate";
+    public static final String END_DATE = "endDate";
+
+    
     // Helper: Operations
     private static final String OP_ORDER = "order";
     private static final String OP_LOOKUP = "lookups";
@@ -124,6 +128,9 @@ public final class RouteConstants {
     private static final String API_BASE_ROUTE_FOR_SESSION = "/api/nucleus-insights/rest/" + API_VERSION + '/';
     private static final String DCA = "dca";
 
+    private static final String API_VERSION_III = "v3";
+    private static final String API_BASE_ROUTE_III = "/api/nucleus-insights/" + API_VERSION_III + '/';
+
     //Rubrics
 //    private static final String RUBRIC_GRADING_API_VERSION = "v2";
 //    private static final String RUBRIC_GRADING_API_BASE_ROUTE = "/api/rubric-grading/" + RUBRIC_GRADING_API_VERSION + SEP;
@@ -133,6 +140,7 @@ public final class RouteConstants {
     
     private static final String ENTITY_STUDENTS = "students";
     private static final String ENTITY_ANSWERS = "answers";    
+    private static final String ENTITY_STUDENT = "student";
 
     
     //GetStudentPeersinCourse (getCoursePeers)
@@ -406,6 +414,10 @@ public final class RouteConstants {
     		  + SEP + COLON + QUE_ID + SEP + ENTITY_STUDENTS + SEP + COLON + STUDENT_ID + SEP + ENTITY_ANSWERS;
 
       //*************** RUBRICS GRADING********************************************************************************
+
+      //Data Reports for NU
+      //{REST_END_POINT}/api/nucleus-insights/v3/student/performance
+      public static final String DATA_REPORTS_FOR_STUDENT = API_BASE_ROUTE_III + ENTITY_STUDENT + SEP + PERFORMANCE;
 
     private RouteConstants() {
         throw new AssertionError();
