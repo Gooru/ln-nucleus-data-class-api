@@ -218,6 +218,9 @@ public final class MessageConstants {
     public static final String MSG_OP_STUDENT_PERF_DAILY_CLASS_ACTIVITY = "student.daily.class.activity.performance";
     public static final String MSG_OP_DCA_SESSION_TAXONOMY_REPORT = "dca.session.taxonomy.report";
 
+    //DATA REPORTS
+    public static final String MSG_OP_NU_DATA_REPORT = "nu.data.report";
+
     private MessageConstants() {
         throw new AssertionError();
     }

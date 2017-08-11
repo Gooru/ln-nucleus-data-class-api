@@ -546,6 +546,21 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
       
     //***************************************************************************************************************************
 
+      //Data Reports for NU
+      //{REST_END_POINT}/api/nucleus-insights/v3/student/performance
+      router.get(RouteConstants.DATA_REPORTS_FOR_STUDENT).handler(routingContext -> {            
+        String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+        String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+        //DATE FORMAT "YYYY-MM-DD"
+        String startDate = routingContext.request().getParam(RouteConstants.START_DATE);
+        String endDate = routingContext.request().getParam(RouteConstants.END_DATE);
+        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_NU_DATA_REPORT)
+            .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_USER, userId)
+            .addHeader(RouteConstants.START_DATE, startDate).addHeader(RouteConstants.END_DATE, endDate);
+        eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+            options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    }); 
     }
     
 }
