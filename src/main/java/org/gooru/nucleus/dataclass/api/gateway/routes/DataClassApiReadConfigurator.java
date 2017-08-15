@@ -542,7 +542,23 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
               .addHeader(RouteConstants.QUE_ID, question_id).addHeader(RouteConstants.STUDENT_ID, student_id);
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
-      });      
+      });
+      
+      //Get Rubric Grading Summary for Question
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/class/{classId}/course/{courseId}/collection/
+      //{collectionId}/question/{question_id}/summary
+      router.get(RouteConstants.RUBRIC_QUESTION_GRADE_SUMMARY_GET).handler(routingContext -> {  
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+          String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          String question_id = routingContext.request().getParam(RouteConstants.QUE_ID);          
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RUBRIC_QUESTIONS_GRADE_SUMMARY)
+              .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
+              .addHeader(RouteConstants.ID_COLLECTION, collectionId).addHeader(RouteConstants.QUE_ID, question_id);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
       
     //***************************************************************************************************************************
 

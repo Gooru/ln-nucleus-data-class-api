@@ -72,6 +72,7 @@ public final class RouteConstants {
     // Helper: Entity name constants
     private static final String ENTITY_RESOURCES = "resources";
     private static final String ENTITY_QUESTIONS = "questions";
+    private static final String ENTITY_QUESTION = "question";
     private static final String ENTITY_ASSESSMENTS = "assessments";    
     private static final String ENTITY_ASSESSMENT = "assessment";    
     private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
@@ -113,6 +114,8 @@ public final class RouteConstants {
     private static final String ACTIVITY = "activity";
     private static final String LEARNER = "learner";
     private static final String RUBRICS = "rubrics";
+    private static final String SUMMARY = "summary";
+
     
     
 //    public static final String CLASS_ID = "classId";
@@ -412,6 +415,15 @@ public final class RouteConstants {
       //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions/{question_id}/students/{student_id}/answers
       public static final String RUBRIC_QUESTION_STUDENT_ANSWERS_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_QUESTIONS
     		  + SEP + COLON + QUE_ID + SEP + ENTITY_STUDENTS + SEP + COLON + STUDENT_ID + SEP + ENTITY_ANSWERS;
+
+      //Get Rubric Grading Summary for Question
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/class/{classId}/course/{courseId}/collection/
+      //{collectionId}/question/{question_id}/summary
+      public static final String RUBRIC_QUESTION_GRADE_SUMMARY_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_CLASS + 
+    		  SEP + COLON + ID_CLASS + SEP + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
+    		  ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + ENTITY_QUESTION +
+    		  SEP + COLON + QUE_ID + SEP + SUMMARY;
+
 
       //*************** RUBRICS GRADING********************************************************************************
 
