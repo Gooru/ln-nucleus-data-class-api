@@ -545,7 +545,8 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
       });
       
       //Get Rubric Grading Summary for Question
-      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions/{question_id}/summary
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/class/{classId}/course/{courseId}/collection/
+      //{collectionId}/question/{question_id}/summary
       router.get(RouteConstants.RUBRIC_QUESTION_GRADE_SUMMARY_GET).handler(routingContext -> {  
           String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
           String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);

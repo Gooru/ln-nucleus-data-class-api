@@ -417,8 +417,8 @@ public final class RouteConstants {
     		  + SEP + COLON + QUE_ID + SEP + ENTITY_STUDENTS + SEP + COLON + STUDENT_ID + SEP + ENTITY_ANSWERS;
 
       //Get Rubric Grading Summary for Question
-      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/class/{:classId}/course/{:courseId}/collection/
-      //{:collectionId}/questions/{question_id}/summary
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/class/{classId}/course/{courseId}/collection/
+      //{collectionId}/question/{question_id}/summary
       public static final String RUBRIC_QUESTION_GRADE_SUMMARY_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_CLASS + 
     		  SEP + COLON + ID_CLASS + SEP + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
     		  ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + ENTITY_QUESTION +
