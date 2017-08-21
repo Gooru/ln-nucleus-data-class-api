@@ -68,7 +68,8 @@ public final class RouteConstants {
     private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";    
-       
+    private static final String HYPHEN = "-";  
+    
     // Helper: Entity name constants
     private static final String ENTITY_RESOURCES = "resources";
     private static final String ENTITY_QUESTIONS = "questions";
@@ -434,7 +435,7 @@ public final class RouteConstants {
 
       //Data Reports for NU Course Complettion
       //{REST_END_POINT}/api/nucleus-insights/v3/course/{courseId}/competency/completion
-      public static final String NU_COURSE_COMPETENCY_COMPLETION = API_BASE_ROUTE_III + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + COMPETENCY + SEP + COMPLETION;
+      public static final String NU_COURSE_COMPETENCY_COMPLETION = API_BASE_ROUTE_III + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + COMPETENCY + HYPHEN + COMPLETION;
 
     private RouteConstants() {
         throw new AssertionError();
