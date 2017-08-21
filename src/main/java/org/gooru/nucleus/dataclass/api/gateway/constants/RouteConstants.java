@@ -144,8 +144,9 @@ public final class RouteConstants {
     private static final String ENTITY_STUDENTS = "students";
     private static final String ENTITY_ANSWERS = "answers";    
     private static final String ENTITY_STUDENT = "student";
+    private static final String COMPLETION = "completion";
+    private static final String COMPETENCY = "competency";
 
-    
     //GetStudentPeersinCourse (getCoursePeers)
     //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/peers
     public static final String COURSE_PEERS_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
@@ -430,6 +431,10 @@ public final class RouteConstants {
       //Data Reports for NU
       //{REST_END_POINT}/api/nucleus-insights/v3/student/performance
       public static final String DATA_REPORTS_FOR_STUDENT = API_BASE_ROUTE_III + ENTITY_STUDENT + SEP + PERFORMANCE;
+
+      //Data Reports for NU Course Complettion
+      //{REST_END_POINT}/api/nucleus-insights/v3/course/{courseId}/competency/completion
+      public static final String NU_COURSE_COMPETENCY_COMPLETION = API_BASE_ROUTE_III + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + COMPETENCY + SEP + COMPLETION;
 
     private RouteConstants() {
         throw new AssertionError();
