@@ -434,13 +434,9 @@ public final class RouteConstants {
       //{REST_END_POINT}/api/nucleus-insights/v3/student/performance
       public static final String DATA_REPORTS_FOR_STUDENT = API_BASE_ROUTE_III + ENTITY_STUDENT + SEP + PERFORMANCE;
 
-      //Data Reports for NU Course Completion
-      //{REST_END_POINT}/api/nucleus-insights/v3/course/{courseId}/competency-completion
-      public static final String NU_COURSE_COMPETENCY_COMPLETION = API_BASE_ROUTE_III + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + COMPETENCY + HYPHEN + COMPLETION;
-
       //Courses Competency Completion
-      //{REST_END_POINT}/api/nucleus-insights/v3/courses/competency-completion
-      public static final String NU_COURSES_COMPETENCY_COMPLETION = API_BASE_ROUTE_III + COURSES + SEP + COMPETENCY + HYPHEN + COMPLETION;
+      //{REST_END_POINT}/api/nucleus-insights/v3/classes/competency-completion
+      public static final String NU_COURSES_COMPETENCY_COMPLETION = API_BASE_ROUTE_III + CLASSES + SEP + COMPETENCY + HYPHEN + COMPLETION;
 
       
     private RouteConstants() {

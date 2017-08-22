@@ -578,17 +578,6 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
             options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     }); 
       
-      //Data Reports for NU Course Completion
-      //{REST_END_POINT}/api/nucleus-insights/v3/course/{courseId}/competency/completion
-      router.get(RouteConstants.NU_COURSE_COMPETENCY_COMPLETION).handler(routingContext -> {            
-        String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
-        String userId = routingContext.request().getParam(RouteConstants.ID_USER);
-        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_NU_COURSE_COMPETENCY_COMPLETION)
-            .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_USER, userId);
-        eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
-            options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
-    }); 
    
       //Get NU Courses Competency Completion       
       router.post(RouteConstants.NU_COURSES_COMPETENCY_COMPLETION).handler(routingContext -> {            
