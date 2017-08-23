@@ -580,6 +580,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
       
    
       //Get NU Courses Competency Completion       
+      //{REST_END_POINT}/api/nucleus-insights/v3/courses/competency-completion
       router.post(RouteConstants.NU_COURSES_COMPETENCY_COMPLETION).handler(routingContext -> {            
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
               .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_NU_COURSES_COMPETENCY_COMPLETION);
