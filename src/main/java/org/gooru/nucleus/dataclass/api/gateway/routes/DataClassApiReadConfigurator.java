@@ -542,10 +542,51 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
               .addHeader(RouteConstants.QUE_ID, question_id).addHeader(RouteConstants.STUDENT_ID, student_id);
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
-      });      
+      });
+      
+      //Get Rubric Grading Summary for Question
+      //{REST_END_POINT}/api/nucleus-insights/v2/rubrics/class/{classId}/course/{courseId}/collection/
+      //{collectionId}/question/{question_id}/summary
+      router.get(RouteConstants.RUBRIC_QUESTION_GRADE_SUMMARY_GET).handler(routingContext -> {  
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+          String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          String question_id = routingContext.request().getParam(RouteConstants.QUE_ID);          
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RUBRIC_QUESTIONS_GRADE_SUMMARY)
+              .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
+              .addHeader(RouteConstants.ID_COLLECTION, collectionId).addHeader(RouteConstants.QUE_ID, question_id);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
       
     //***************************************************************************************************************************
 
+      //Data Reports for NU
+      //{REST_END_POINT}/api/nucleus-insights/v3/student/performance
+      router.get(RouteConstants.DATA_REPORTS_FOR_STUDENT).handler(routingContext -> {            
+        String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+        String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+        //DATE FORMAT "YYYY-MM-DD"
+        String startDate = routingContext.request().getParam(RouteConstants.START_DATE);
+        String endDate = routingContext.request().getParam(RouteConstants.END_DATE);
+        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_NU_DATA_REPORT)
+            .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_USER, userId)
+            .addHeader(RouteConstants.START_DATE, startDate).addHeader(RouteConstants.END_DATE, endDate);
+        eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+            options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    }); 
+      
+   
+      //Get NU Courses Competency Completion       
+      //{REST_END_POINT}/api/nucleus-insights/v3/courses/competency-completion
+      router.post(RouteConstants.NU_COURSES_COMPETENCY_COMPLETION).handler(routingContext -> {            
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_NU_COURSES_COMPETENCY_COMPLETION);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
     }
     
 }
