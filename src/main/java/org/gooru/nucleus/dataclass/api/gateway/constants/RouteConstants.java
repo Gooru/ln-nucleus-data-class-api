@@ -29,7 +29,6 @@ public final class RouteConstants {
     public static final String ID_EMAIL = "email";
     public static final String CODE_CLASS = "classCode";
     public static final String ID_SESSION = "sessionId";
-    public static final String AGGREGATED = "aggregated";
     public static final String REPORT = "report";
 
     public static final String START_DATE = "startDate";
@@ -392,10 +391,10 @@ public final class RouteConstants {
               ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ACTIVITY;
       
       //Get Student Performance for multiple Assessment (@Teacher Dashboard, @DCA)    
-      //{REST_END_POINT}/api/nucleus-insights/v2/class/:classId/aggregated/report
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classId}/report
       //dimension could be weekly, monthly
       public static final String STUDENT_PERF_DAILY_TIMELY_CLASS_ACTIVITY = API_BASE_ROUTE +
-              ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + AGGREGATED + SEP + REPORT;
+              DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP  + REPORT;
       
       //Get Student Session wise taxonomy report (getSessionTaxonomyReport)
       //{REST_END_POINT}/api/nucleus-insights/v2/dca/session/{sessionId}/taxonomy/usage
