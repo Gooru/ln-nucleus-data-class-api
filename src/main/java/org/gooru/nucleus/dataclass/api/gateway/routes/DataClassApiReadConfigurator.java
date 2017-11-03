@@ -478,6 +478,15 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
               reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });  
     
+    //Get Student Performance for Daily (weekly, monthly) Class Activity(@Student/Teacher)        
+  router.get(RouteConstants.STUDENT_PERF_DAILY_TIMELY_CLASS_ACTIVITY).handler(routingContext -> {
+    String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+    DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_PERF_DAILY_TIMELY_CLASS_ACTIVITY)
+            .addHeader(RouteConstants.ID_CLASS, classId);
+    eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+  });  
       //Get Session Taxonomy Report        
       router.get(RouteConstants.DCA_SESSION_TAXONOMY_REPORT_GET).handler(routingContext -> {            
           String sessionId = routingContext.request().getParam(RouteConstants.ID_SESSION);
