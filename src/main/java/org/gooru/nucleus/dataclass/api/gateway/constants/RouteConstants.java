@@ -409,6 +409,21 @@ public final class RouteConstants {
       public static final String DCA_ASSESSMENT_STUDENT_SUMMARY_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_ASSESSMENT + SEP + COLON + ID_ASSESSMENT + SEP +
       		ENTITY_USER + SEP + COLON + ID_USER;
 
+    	//Get Students Performance In an Assessment (Teacher View)
+	    //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classGooruId}/assessment/{assessmentGooruId}/performance
+      public static final String DCA_ASSESSMENT_STUDENTS_PERF_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+	    		ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP + PERFORMANCE;
+      
+      //Get Students Performance In an Assessment (Teacher View)
+	  //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classGooruId}/collection/{collectionGooruId}/performance
+      public static final String DCA_COLLECTION_STUDENTS_PERF_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+	    		ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + PERFORMANCE;
+    
+      //GET ALL USER SESSIONS
+      //{REST_END_POINT}/insights/api/rest/v2/{collectionType}/{contentGooruId}/sessions    
+      public static final String DCA_USER_ALL_SESSIONS_GET_FOR_ASSESSMENT = API_BASE_ROUTE + DCA + SEP + ENTITY_ASSESSMENT + SEP + COLON + 
+    		  ID_COLLECTION + SEP + SESSIONS;
+
       
       //*************** RUBRICS GRADING********************************************************************************
       

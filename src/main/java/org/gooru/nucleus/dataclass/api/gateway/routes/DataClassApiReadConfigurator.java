@@ -519,6 +519,38 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
       
+      //DCA Assessment Performance (Teacher)
+      router.get(RouteConstants.DCA_ASSESSMENT_STUDENTS_PERF_GET).handler(routingContext -> {            
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String assessmentId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_STUDENT_ASSESSMENT_PERF)
+              .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COLLECTION, assessmentId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+
+      //DCA Collection Performance (Teacher)
+      router.get(RouteConstants.DCA_COLLECTION_STUDENTS_PERF_GET).handler(routingContext -> {            
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_STUDENT_COLLECTION_PERF)
+              .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COLLECTION, collectionId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+      
+      //DCA Get User Session for Assessment        
+      router.get(RouteConstants.DCA_USER_ALL_SESSIONS_GET_FOR_ASSESSMENT).handler(routingContext -> {            
+          String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);            
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_STUDENT_ASSESSMENT_ALL_SESSIONS)
+              .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+      
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading
