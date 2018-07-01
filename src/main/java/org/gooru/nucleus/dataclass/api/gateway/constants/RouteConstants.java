@@ -149,6 +149,9 @@ public final class RouteConstants {
     private static final String ENTITY_STUDENT = "student";
     private static final String COMPLETION = "completion";
     private static final String COMPETENCY = "competency";
+    
+    private static final String ATC = "atc";
+    private static final String PERF_VS_COMP = "pvc";
 
     //GetStudentPeersinCourse (getCoursePeers)
     //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/peers
@@ -459,6 +462,13 @@ public final class RouteConstants {
       //Courses Competency Completion
       //{REST_END_POINT}/api/nucleus-insights/v3/courses/competency-completion
       public static final String NU_COURSES_COMPETENCY_COMPLETION = API_BASE_ROUTE_III + COURSES + SEP + COMPETENCY + HYPHEN + COMPLETION;
+
+      //********************************************************************************************************************************      
+      //TEACHER VIEW: Air Traffic Control Dashboard (ATC): All Students Performance Vs Completion Graph
+      //{REST_END_POINT}/api/nucleus-insights/v2/classes/performance
+      public static final String STUDENTS_PERFORMANCE_VS_COMPLETION = API_BASE_ROUTE +
+              ATC + SEP + PERF_VS_COMP;
+
 
       
     private RouteConstants() {

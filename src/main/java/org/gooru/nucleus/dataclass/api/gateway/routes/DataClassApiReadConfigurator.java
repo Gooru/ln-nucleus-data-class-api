@@ -628,6 +628,18 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
+      
+      //********************************************************************************************************************************      
+      //TEACHER VIEW: Air Traffic Control Dashboard (ATC): All Students Performance Vs Completion Graph       
+      router.get(RouteConstants.STUDENTS_PERFORMANCE_VS_COMPLETION).handler(routingContext -> {            
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENTS_PERF_VS_COMPLETION);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+
+      
+      
     }
     
 }
