@@ -96,6 +96,9 @@ public final class MessageConstants {
     //DATA REPORTS
     public static final String MSG_OP_NU_DATA_REPORT = "nu.data.report";
     public static final String MSG_OP_NU_COURSES_COMPETENCY_COMPLETION = "nu.courses.competency.completion";
+    
+    //ATC
+    public static final String MSG_OP_STUDENTS_PERF_VS_COMPLETION = "all.students.performance.vs.completion";
 
     private MessageConstants() {
         throw new AssertionError();
