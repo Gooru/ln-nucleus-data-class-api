@@ -133,6 +133,22 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
+
+        //Collection Perf
+        router.get(RouteConstants.COLLECTION_STUDENTS_PERF_GET).handler(routingContext -> {            
+            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);            
+            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+            String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
+            String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
+            String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_COLLECTION_PERF)
+                .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
+                .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_LESSON, lessonId)
+                .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+            eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
         
         //Collection End Page Summary
         router.get(RouteConstants.COLLECTION_STUDENT_SUMMARY_GET).handler(routingContext -> {            
