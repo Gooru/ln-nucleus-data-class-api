@@ -34,44 +34,13 @@ public final class RouteConstants {
     public static final String START_DATE = "startDate";
     public static final String END_DATE = "endDate";
 
-    
-    // Helper: Operations
-    private static final String OP_ORDER = "order";
-    private static final String OP_LOOKUP = "lookups";
-    private static final String OP_MEMBER = "members";
-    private static final String OP_INVITE = "invites";
-    private static final String OP_AUTH = "authorization";
-    private static final String OP_DEMOGRAPHICS = "demographics";
-    private static final String OP_FOLLOW = "follow";
-    private static final String OP_UNFOLLOW = "unfollow";
-    private static final String OP_SUBJECT_BUCKET = "subject-buckets";
-    private static final String OP_TAXONOMY = "taxonomy";
-    private static final String OP_NETWORK = "network";
-
     // Misc helpers
-    private static final String RES_EDUCATIONAL_USE = "educational-use";
-    private static final String RES_DOK = "dok";
-    private static final String RES_ACCESS_HAZARDS = "access-hazards";
-    private static final String RES_READING_LEVELS = "reading-levels";
-    private static final String RES_ADS = "ads";
-    private static final String RES_MEDIA_FEATURES = "media-features";
-    private static final String RES_CEN21SKILLS = "21-century-skills";
-    private static final String RES_GRADES = "grades";
-    private static final String RES_MOMENTS = "moments";
-    private static final String RES_AUDIENCE = "audience";
-    private static final String RES_COUNTRIES = "countries";
-    private static final String RES_STATES = "states";
-    private static final String RES_SCHOOLDISTRICTS = "school-districts";
-    private static final String RES_SCHOOLS = "schools";
-    private static final String RES_TX_STANDARD_FRAMEWORK = "frameworks";
-    private static final String RES_LICENSE = "licenses";
-    private static final String RES_APIKEY_CONFIG = "apikey-config";
-    private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";    
     private static final String HYPHEN = "-";  
     
     // Helper: Entity name constants
+    private static final String ENTITY_TX_SUBJECT = "subjects";
     private static final String ENTITY_RESOURCES = "resources";
     private static final String ENTITY_QUESTIONS = "questions";
     private static final String ENTITY_QUESTION = "question";
@@ -88,16 +57,7 @@ public final class RouteConstants {
     private static final String ENTITY_COURSE = "course";
     private static final String ENTITY_UNIT = "unit";
     private static final String ENTITY_LESSON = "lesson";
-    
-    
-    private static final String ENTITY_COLLABORATORS = "collaborators";
-    private static final String ENTITY_TAXONOMY = "taxonomy";
-    private static final String ENTITY_TX_SUBJECT = "subjects";
-    private static final String ENTITY_TX_COURSE = "courses";
-    private static final String ENTITY_TX_DOMAIN = "domains";
-    private static final String ENTITY_TX_CODES = "codes";
-    private static final String ENTITY_COPIER = "copier";
-    private static final String ENTITY_PROFILES = "profiles";
+    private static final String ENTITY_ITEMS = "items";
 
     // Class Reports - Write/Read APIs
     private static final String LOCATION = "location";
@@ -118,7 +78,6 @@ public final class RouteConstants {
     private static final String LEARNER = "learner";
     private static final String RUBRICS = "rubrics";
     private static final String SUMMARY = "summary";
-
     
     
 //    public static final String CLASS_ID = "classId";
@@ -474,12 +433,17 @@ public final class RouteConstants {
 
       //********************************************************************************************************************************      
       //TEACHER VIEW: Air Traffic Control Dashboard (ATC): All Students Performance Vs Completion Graph
-      //{REST_END_POINT}/api/nucleus-insights/v2/classes/performance
+      //{REST_END_POINT}/api/nucleus-insights/v2/atc/pvc
       public static final String STUDENTS_PERFORMANCE_VS_COMPLETION = API_BASE_ROUTE +
               ATC + SEP + PERF_VS_COMP;
 
-
+      //{REST_END_POINT}/api/nucleus-insights/v2/class/{classId}/items/performance
+      public static final String STUDENTS_COURSE_ALL_ITEMS_PERF = API_BASE_ROUTE +
+           ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_ITEMS + SEP + PERFORMANCE;
       
+      //{REST_END_POINT}/api/nucleus-insights/v2/learner/course/{courseId}/items/performance
+      public static final String INDEPENDENT_LEARNER_COURSE_ALL_ITEMS_PERF = API_BASE_ROUTE + LEARNER + SEP + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + ENTITY_ITEMS + SEP + PERFORMANCE;
+
     private RouteConstants() {
         throw new AssertionError();
     }
