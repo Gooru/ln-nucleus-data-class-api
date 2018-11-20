@@ -395,6 +395,11 @@ public final class RouteConstants {
       public static final String DCA_USER_ALL_SESSIONS_GET_FOR_ASSESSMENT = API_BASE_ROUTE + DCA + SEP + ENTITY_ASSESSMENT + SEP + COLON + 
     		  ID_COLLECTION + SEP + SESSIONS;
 
+      //Get Student Performance in a Class
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/:classId/performance
+      public static final String DCA_CLASS_PERFORMANCE = API_BASE_ROUTE + DCA + SEP +
+              ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + PERFORMANCE;
+      
       
       //*************** RUBRICS GRADING********************************************************************************
       
