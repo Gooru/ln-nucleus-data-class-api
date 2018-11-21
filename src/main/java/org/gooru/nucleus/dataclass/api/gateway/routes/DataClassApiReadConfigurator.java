@@ -567,6 +567,17 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
       
+      //DCA: Teacher View: Get Class Performance       
+      router.get(RouteConstants.DCA_CLASS_PERFORMANCE).handler(routingContext -> {            
+    	  String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_CLASS_PERF)
+              .addHeader(RouteConstants.ID_CLASS, classId);;
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+
+      
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading
