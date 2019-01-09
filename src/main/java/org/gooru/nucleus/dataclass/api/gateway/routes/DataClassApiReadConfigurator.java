@@ -577,7 +577,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
 
-      router.post(RouteConstants.DCA_CLASS_SUMMARY_MONTHLY).handler(routingContext -> {
+      router.get(RouteConstants.DCA_CLASS_SUMMARY_MONTHLY).handler(routingContext -> {
           String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                   .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_CLASS_SUMMARY_MONTHLY)
@@ -586,7 +586,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
 
-      router.post(RouteConstants.DCA_CLASS_SUMMARY_FOR_MONTH).handler(routingContext -> {
+      router.get(RouteConstants.DCA_CLASS_SUMMARY_FOR_MONTH).handler(routingContext -> {
           String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                   .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_CLASS_SUMMARY_FOR_MONTH)
@@ -595,7 +595,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
 
-      router.post(RouteConstants.DCA_CLASS_USER_SUMMARY_FOR_MONTH).handler(routingContext -> {
+      router.get(RouteConstants.DCA_CLASS_USER_SUMMARY_FOR_MONTH).handler(routingContext -> {
           String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
           String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
           String collectionType = routingContext.request().getParam(RouteConstants.COLLECTION_TYPE);

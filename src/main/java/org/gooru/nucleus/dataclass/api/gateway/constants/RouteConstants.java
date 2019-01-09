@@ -394,7 +394,7 @@ public final class RouteConstants {
 	    		ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + PERFORMANCE;
     
       //GET ALL USER SESSIONS
-      //{REST_END_POINT}/insights/api/rest/v2/{collectionType}/{contentGooruId}/sessions    
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/{collectionType}/{contentGooruId}/sessions    
       public static final String DCA_USER_ALL_SESSIONS_GET_FOR_ASSESSMENT = API_BASE_ROUTE + DCA + SEP + ENTITY_ASSESSMENT + SEP + COLON + 
     		  ID_COLLECTION + SEP + SESSIONS;
 
