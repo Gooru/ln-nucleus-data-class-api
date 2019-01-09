@@ -404,15 +404,15 @@ public final class RouteConstants {
               ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + PERFORMANCE;
       
     //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/:classId/summary
-      public static final String DCA_CLASS_SUMMARY_MONTHLY = API_BASE_ROUTE +
+      public static final String DCA_CLASS_SUMMARY_FOR_YEAR = API_BASE_ROUTE +
           DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + SUMMARY;
       
       //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/:classId/activities/summary
-      public static final String DCA_CLASS_SUMMARY_FOR_MONTH = API_BASE_ROUTE +
+      public static final String DCA_CLASS_ACTIVITIES_SUMMARY_FOR_MONTH = API_BASE_ROUTE +
           DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP  + ACTIVITIES + SEP + SUMMARY;
       
       //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/:classId/:collectionType/:collectionId/learners/summary
-      public static final String DCA_CLASS_USER_SUMMARY_FOR_MONTH = API_BASE_ROUTE +
+      public static final String DCA_CLASS_LEARNERS_SUMMARY_FOR_MONTH = API_BASE_ROUTE +
           DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + COLON + COLLECTION_TYPE + SEP +
           COLON + ID_COLLECTION + SEP + LEARNERS + SEP + SUMMARY;
       //*************** RUBRICS GRADING********************************************************************************
