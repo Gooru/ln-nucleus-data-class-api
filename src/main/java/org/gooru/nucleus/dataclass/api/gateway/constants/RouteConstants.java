@@ -78,6 +78,9 @@ public final class RouteConstants {
     private static final String LEARNER = "learner";
     private static final String RUBRICS = "rubrics";
     private static final String SUMMARY = "summary";
+    private static final String ACTIVITIES = "activities";
+    private static final String LEARNERS = "learners";
+    public static final String COLLECTION_TYPE = "collectionType";
     
     
 //    public static final String CLASS_ID = "classId";
@@ -391,7 +394,7 @@ public final class RouteConstants {
 	    		ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + PERFORMANCE;
     
       //GET ALL USER SESSIONS
-      //{REST_END_POINT}/insights/api/rest/v2/{collectionType}/{contentGooruId}/sessions    
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/{collectionType}/{contentGooruId}/sessions    
       public static final String DCA_USER_ALL_SESSIONS_GET_FOR_ASSESSMENT = API_BASE_ROUTE + DCA + SEP + ENTITY_ASSESSMENT + SEP + COLON + 
     		  ID_COLLECTION + SEP + SESSIONS;
 
@@ -400,7 +403,18 @@ public final class RouteConstants {
       public static final String DCA_CLASS_PERFORMANCE = API_BASE_ROUTE + DCA + SEP +
               ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + PERFORMANCE;
       
+    //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/:classId/summary
+      public static final String DCA_CLASS_SUMMARY_FOR_YEAR = API_BASE_ROUTE +
+          DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + SUMMARY;
       
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/:classId/activities/summary
+      public static final String DCA_CLASS_ACTIVITIES_SUMMARY_FOR_MONTH = API_BASE_ROUTE +
+          DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP  + ACTIVITIES + SEP + SUMMARY;
+      
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/:classId/:collectionType/:collectionId/learners/summary
+      public static final String DCA_CLASS_LEARNERS_SUMMARY_FOR_MONTH = API_BASE_ROUTE +
+          DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + COLON + COLLECTION_TYPE + SEP +
+          COLON + ID_COLLECTION + SEP + LEARNERS + SEP + SUMMARY;
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading

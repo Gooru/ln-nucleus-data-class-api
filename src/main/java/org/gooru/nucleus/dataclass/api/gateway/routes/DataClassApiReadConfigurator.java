@@ -577,7 +577,36 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
               options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
 
-      
+      router.get(RouteConstants.DCA_CLASS_SUMMARY_FOR_YEAR).handler(routingContext -> {
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                  .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_CLASS_SUMMARY_MONTHLY)
+                  .addHeader(RouteConstants.ID_CLASS, classId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+
+      router.get(RouteConstants.DCA_CLASS_ACTIVITIES_SUMMARY_FOR_MONTH).handler(routingContext -> {
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                  .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_CLASS_SUMMARY_FOR_MONTH)
+                  .addHeader(RouteConstants.ID_CLASS, classId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+
+      router.get(RouteConstants.DCA_CLASS_LEARNERS_SUMMARY_FOR_MONTH).handler(routingContext -> {
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          String collectionType = routingContext.request().getParam(RouteConstants.COLLECTION_TYPE);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                  .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_CLASS_USER_SUMMARY_FOR_MONTH)
+                  .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COLLECTION, collectionId)
+                  .addHeader(RouteConstants.COLLECTION_TYPE, collectionType);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+                  reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading
