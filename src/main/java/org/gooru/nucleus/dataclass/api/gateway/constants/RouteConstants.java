@@ -163,7 +163,7 @@ public final class RouteConstants {
     
     //Get Students Performance In Lesson (getCollectionPerformance)
     //{REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/unit/{unitGooruId}/lesson/
-    //{lessonGoouId}/assessment/{collectionGooruId}/performance
+    //{lessonGoouId}/collection/{collectionGooruId}/performance
     public static final String COLLECTION_STUDENTS_PERF_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
     		ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + 
     		ENTITY_UNIT + SEP + COLON + ID_UNIT + SEP + 
@@ -390,7 +390,7 @@ public final class RouteConstants {
       
       //Get Students Performance In an Assessment (Teacher View)
 	  //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classGooruId}/collection/{collectionGooruId}/performance
-      public static final String DCA_COLLECTION_STUDENTS_PERF_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+    public static final String DCA_COLLECTION_STUDENTS_PERF_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
 	    		ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + PERFORMANCE;
     
       //GET ALL USER SESSIONS
@@ -415,6 +415,13 @@ public final class RouteConstants {
       public static final String DCA_CLASS_LEARNERS_SUMMARY_FOR_MONTH = API_BASE_ROUTE +
           DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + COLON + COLLECTION_TYPE + SEP +
           COLON + ID_COLLECTION + SEP + LEARNERS + SEP + SUMMARY;
+      
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classGooruId}/assessment/{assessmentGooruId}/session/{sessionId}/performance
+      public static final String CA_ASSESSMENT_STUDENTS_SESSION_PERF_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+                ENTITY_ASSESSMENT + SEP + COLON + ID_COLLECTION + SEP + SESSION + SEP + COLON + ID_SESSION + SEP + PERFORMANCE;
+    //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classGooruId}/collection/{collectionGooruId}/session/{sessionId}/performance
+      public static final String CA_COLLECTION_STUDENTS_SESSION_PERF_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
+                ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + SESSION + SEP + COLON + ID_SESSION + SEP + PERFORMANCE;
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading

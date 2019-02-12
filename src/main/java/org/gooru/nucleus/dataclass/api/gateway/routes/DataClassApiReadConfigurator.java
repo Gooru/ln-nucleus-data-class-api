@@ -606,6 +606,33 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext), options,
                   reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
       });
+      
+    //CA Assessment Session Performance
+      router.get(RouteConstants.CA_ASSESSMENT_STUDENTS_SESSION_PERF_GET).handler(routingContext -> {            
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String assessmentId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          String sessionId = routingContext.request().getParam(RouteConstants.ID_SESSION);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CA_STUDENT_ASSESSMENT_SESSION_PERF)
+              .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COLLECTION, assessmentId)
+              .addHeader(RouteConstants.ID_SESSION, sessionId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+      
+    //CA Collection Session Performance
+      router.get(RouteConstants.CA_COLLECTION_STUDENTS_SESSION_PERF_GET).handler(routingContext -> {            
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String assessmentId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          String sessionId = routingContext.request().getParam(RouteConstants.ID_SESSION);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CA_STUDENT_COLLECTION_SESSION_PERF)
+              .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COLLECTION, assessmentId)
+              .addHeader(RouteConstants.ID_SESSION, sessionId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
+      
 
       //*************** RUBRICS GRADING********************************************************************************
       
