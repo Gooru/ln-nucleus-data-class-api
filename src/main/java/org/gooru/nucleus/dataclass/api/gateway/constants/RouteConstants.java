@@ -422,6 +422,12 @@ public final class RouteConstants {
     //{REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classGooruId}/collection/{collectionGooruId}/session/{sessionId}/performance
       public static final String CA_COLLECTION_STUDENTS_SESSION_PERF_GET = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP +
                 ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + SESSION + SEP + COLON + ID_SESSION + SEP + PERFORMANCE;
+      
+      //Get Performance for ALL Classes
+      //{REST_END_POINT}/api/nucleus-insights/v2/dca/classes/performance
+      public static final String DCA_ALL_CLASSES_PERFORMANCE = API_BASE_ROUTE + DCA + SEP + 
+          CLASSES + SEP + PERFORMANCE;
+
       //*************** RUBRICS GRADING********************************************************************************
       
       //Get Questions pending grading
