@@ -1,17 +1,16 @@
 package org.gooru.nucleus.dataclass.api.gateway.responses.transformers;
 
 import java.util.Map;
-
 import io.vertx.core.json.JsonObject;
 
 public interface ResponseTransformer {
 
-    void transform();
+  void transform();
 
-    JsonObject transformedBody();
+  JsonObject transformedBody();
 
-    Map<String, String> transformedHeaders();
+  Map<String, String> transformedHeaders();
 
-    int transformedStatus();
+  int transformedStatus();
 
 }

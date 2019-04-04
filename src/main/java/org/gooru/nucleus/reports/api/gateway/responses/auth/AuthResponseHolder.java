@@ -5,6 +5,6 @@ public interface AuthResponseHolder {
   boolean isAuthorized();
 
   boolean isAnonymous();
-  
+
   String getUserId();
 }
