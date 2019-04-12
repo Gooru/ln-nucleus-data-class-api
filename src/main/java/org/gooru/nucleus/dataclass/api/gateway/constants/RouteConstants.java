@@ -92,6 +92,8 @@ public final class RouteConstants {
   // Updated API Version
   private static final String API_VERSION = "v2";
   private static final String API_BASE_ROUTE = "/api/nucleus-insights/" + API_VERSION + '/';
+  private static final String API_INTERNAL_BASE_ROUTE =
+      "/api/nucleus-insights-internal/" + API_VERSION + '/';
   private static final String API_BASE_ROUTE_FOR_SESSION =
       "/api/nucleus-insights/rest/" + API_VERSION + '/';
   private static final String DCA = "dca";
@@ -499,6 +501,16 @@ public final class RouteConstants {
   // {REST_END_POINT}/api/nucleus-insights/v2/learner/course/{courseId}/items/performance
   public static final String INDEPENDENT_LEARNER_COURSE_ALL_ITEMS_PERF = API_BASE_ROUTE + LEARNER
       + SEP + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + ENTITY_ITEMS + SEP + PERFORMANCE;
+
+  // Internal Routes
+  // Get Student Performance for All Classes - Internal API
+  // {REST_END_POINT}/api/nucleus-insights-internal/v2/classes/performance
+  public static final String INTERNAL_ALL_CLASSES_PERFORMANCE =
+      API_INTERNAL_BASE_ROUTE + CLASSES + SEP + PERFORMANCE;
+  
+  // {REST_END_POINT}/api/nucleus-insights-internal/v2/dca/class/:classId/performance
+  public static final String INTERNAL_DCA_CLASS_PERFORMANCE =
+      API_INTERNAL_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + PERFORMANCE;
 
   private RouteConstants() {
     throw new AssertionError();
