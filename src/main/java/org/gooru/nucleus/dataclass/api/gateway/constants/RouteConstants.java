@@ -510,7 +510,7 @@ public final class RouteConstants {
   
   // {REST_END_POINT}/api/nucleus-insights-internal/v2/dca/class/:classId/performance
   public static final String INTERNAL_DCA_CLASS_PERFORMANCE =
-      API_INTERNAL_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + PERFORMANCE;
+      API_INTERNAL_BASE_ROUTE + DCA + SEP + CLASSES + SEP + PERFORMANCE;
 
   private RouteConstants() {
     throw new AssertionError();
