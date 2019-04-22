@@ -15,6 +15,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     // Auth configurator should be first.
     configurators.add(new RouteAuthConfigurator());
     configurators.add(new DataClassApiReadConfigurator());
+    configurators.add(new RouteInternalConfigurator());
     internalIterator = configurators.iterator();
   }
 
