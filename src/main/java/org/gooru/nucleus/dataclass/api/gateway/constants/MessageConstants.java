@@ -151,10 +151,21 @@ public final class MessageConstants {
   public static final String MSG_OP_INDEPENDENT_LEARNER_COURSE_ALL_ITEMS_PERF =
       "independent.learner.course.all.items.performance";
 
+  // MILESTONE
+  public static final String MSG_OP_STUDENT_MILESTONE_PERF = "student.milestone.performance";
+  public static final String MSG_OP_STUDENT_MILESTONE_LESSON_PERF =
+      "student.milestone.lesson.performance";
+  // MILESTONE - Independent Learner
+  public static final String MSG_OP_IND_LEARNER_MILESTONE_PERF =
+      "independent.learner.milestone.performance";
+  public static final String MSG_OP_IND_LEARNER_MILESTONE_LESSON_PERF =
+      "independent.learner.milestone.lesson.performance";
+
   // Internal
   public static final String MSG_OP_INTERNAL_ALL_STUDENT_CLASSES_PERF =
       "internal.all.class.student.performance";
-  public static final String MSG_OP_INTERNAL_DCA_ALL_CLASSES_PERF = "internal.dca.all.classes.performance";
+  public static final String MSG_OP_INTERNAL_DCA_ALL_CLASSES_PERF =
+      "internal.dca.all.classes.performance";
 
   private MessageConstants() {
     throw new AssertionError();
