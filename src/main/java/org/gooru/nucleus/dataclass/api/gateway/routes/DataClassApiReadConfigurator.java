@@ -888,6 +888,62 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
+    // MILESTONE
+    // Milestone Perf
+    router.get(RouteConstants.MILESTONE_STUDENT_PERF_GET).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_STUDENT_MILESTONE_PERF)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_COURSE, courseId);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    // Milestone Lesson Perf
+    router.get(RouteConstants.MILESTONE_LESSON_STUDENT_PERF_GET).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String milestoneId = routingContext.request().getParam(RouteConstants.ID_MILESTONE);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_STUDENT_MILESTONE_LESSON_PERF)
+          .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_COURSE, courseId)
+          .addHeader(RouteConstants.ID_MILESTONE, milestoneId);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    // MILESTONE - Independent Learner
+    // Milestone Perf
+    router.get(RouteConstants.MILESTONE_IND_LEARNER_PERF_GET).handler(routingContext -> {
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_IND_LEARNER_MILESTONE_PERF)
+          .addHeader(RouteConstants.ID_COURSE, courseId);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    // Milestone Lesson Perf
+    router.get(RouteConstants.MILESTONE_LESSON_IND_LEARNER_PERF_GET).handler(routingContext -> {
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String milestoneId = routingContext.request().getParam(RouteConstants.ID_MILESTONE);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_IND_LEARNER_MILESTONE_LESSON_PERF)
+          .addHeader(RouteConstants.ID_COURSE, courseId)
+          .addHeader(RouteConstants.ID_MILESTONE, milestoneId);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
   }
 
 }

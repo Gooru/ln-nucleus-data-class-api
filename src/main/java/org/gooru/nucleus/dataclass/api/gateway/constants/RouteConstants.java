@@ -29,6 +29,7 @@ public final class RouteConstants {
   public static final String CODE_CLASS = "classCode";
   public static final String ID_SESSION = "sessionId";
   public static final String REPORT = "report";
+  public static final String ID_MILESTONE = "milestoneId";
 
   public static final String START_DATE = "startDate";
   public static final String END_DATE = "endDate";
@@ -57,6 +58,7 @@ public final class RouteConstants {
   private static final String ENTITY_UNIT = "unit";
   private static final String ENTITY_LESSON = "lesson";
   private static final String ENTITY_ITEMS = "items";
+  private static final String ENTITY_MILESTONE = "milestone";
 
   // Class Reports - Write/Read APIs
   private static final String LOCATION = "location";
@@ -97,6 +99,7 @@ public final class RouteConstants {
   private static final String API_BASE_ROUTE_FOR_SESSION =
       "/api/nucleus-insights/rest/" + API_VERSION + '/';
   private static final String DCA = "dca";
+  private static final String MILESTONE = "milestone";
 
   private static final String API_VERSION_III = "v3";
   private static final String API_BASE_ROUTE_III = "/api/nucleus-insights/" + API_VERSION_III + '/';
@@ -507,10 +510,39 @@ public final class RouteConstants {
   // {REST_END_POINT}/api/nucleus-insights-internal/v2/classes/performance
   public static final String INTERNAL_ALL_CLASSES_PERFORMANCE =
       API_INTERNAL_BASE_ROUTE + CLASSES + SEP + PERFORMANCE;
-  
+
   // {REST_END_POINT}/api/nucleus-insights-internal/v2/dca/class/:classId/performance
   public static final String INTERNAL_DCA_CLASS_PERFORMANCE =
       API_INTERNAL_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + PERFORMANCE;
+
+  // ******************************************************************************************************************************
+
+  // MILESTONE
+  // Get Student Milestone Performance (getMilestonePeformance)
+  // {REST_END_POINT}/api/nucleus-insights/v2/class/{classGooruId}/course/{courseGooruId}/milestone/performance
+  public static final String MILESTONE_STUDENT_PERF_GET =
+      API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSE + SEP + COLON
+          + ID_COURSE + SEP + MILESTONE + SEP + PERFORMANCE;
+
+
+  // Get Student Performance In Milestone (getMilestoneLessonPeformance)
+  // {REST_END_POINT}/api/nucleus-insights/v2/milestone/class/{classGooruId}/course/{courseGooruId}/milestone/{milestoneId}/performance
+  public static final String MILESTONE_LESSON_STUDENT_PERF_GET =
+      API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSE + SEP + COLON
+          + ID_COURSE + SEP + ENTITY_MILESTONE + SEP + COLON + ID_MILESTONE + SEP + PERFORMANCE;
+
+  // MILESTONE - Independent Learner
+  // Get IL Milestone Performance (getMilestonePeformance)
+  // {REST_END_POINT}/api/nucleus-insights/v2/course/{courseGooruId}/milestone/learner/performance
+  public static final String MILESTONE_IND_LEARNER_PERF_GET = API_BASE_ROUTE + ENTITY_COURSE + SEP
+      + COLON + ID_COURSE + SEP + MILESTONE + SEP + LEARNER + SEP + PERFORMANCE;
+
+
+  // Get IL Performance In Milestone (getMilestoneLessonPeformance)
+  // {REST_END_POINT}/api/nucleus-insights/v2/course/{courseGooruId}/milestone/{milestoneId}/learner/performance
+  public static final String MILESTONE_LESSON_IND_LEARNER_PERF_GET =
+      API_BASE_ROUTE + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + ENTITY_MILESTONE + SEP
+          + COLON + ID_MILESTONE + SEP + LEARNER + SEP + PERFORMANCE;
 
   private RouteConstants() {
     throw new AssertionError();
