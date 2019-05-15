@@ -166,6 +166,16 @@ public final class MessageConstants {
       "internal.all.class.student.performance";
   public static final String MSG_OP_INTERNAL_DCA_ALL_CLASSES_PERF =
       "internal.dca.all.classes.performance";
+  
+  // DCA Rubric Grading
+  public static final String MSG_OP_DCA_RUBRICS_QUESTIONS_TO_GRADE = "dca.rubric.questions.to.grade";
+  public static final String MSG_OP_DCA_RUBRIC_QUESTIONS_STUDENTS_LIST =
+      "dca.rubric.questions.students.list";
+  public static final String MSG_OP_DCA_RUBRIC_QUESTIONS_STUDENT_ANSWERS =
+      "dca.rubric.questions.student.answers";
+  public static final String MSG_OP_DCA_RUBRIC_QUESTIONS_GRADE_SUMMARY =
+      "dca.rubric.questions.grade.summary";
+
 
   private MessageConstants() {
     throw new AssertionError();

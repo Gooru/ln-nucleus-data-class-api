@@ -762,9 +762,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
-
-    // *************** RUBRICS
-    // GRADING********************************************************************************
+    // *********** Course Map RUBRICS GRADING***********************************************************************
 
     // Get Questions pending grading
     // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions
@@ -943,6 +941,68 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
+    
+    // *************** DCA RUBRICS GRADING********************************************************************
+
+    // Get Questions pending grading
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/questions
+    router.get(RouteConstants.DCA_RUBRICS_QUESTIONS_TO_GRADE_GET).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(
+          MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_RUBRICS_QUESTIONS_TO_GRADE);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    // Get list of Students for a Question to be graded
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/questions/{question_id}/students
+    router.get(RouteConstants.DCA_RUBRIC_QUESTION_TO_GRADE_LIST_STUDENTS_GET)
+        .handler(routingContext -> {
+          String question_id = routingContext.request().getParam(RouteConstants.QUE_ID);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_DCA_RUBRIC_QUESTIONS_STUDENTS_LIST)
+              .addHeader(RouteConstants.QUE_ID, question_id);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+              new RouteRequestUtility().getBodyForMessage(routingContext), options,
+              reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+
+    // Get Answer for Rubric Grading
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/questions/{question_id}/students/{student_id}/answers
+    router.get(RouteConstants.DCA_RUBRIC_QUESTION_STUDENT_ANSWERS_GET).handler(routingContext -> {
+      String question_id = routingContext.request().getParam(RouteConstants.QUE_ID);
+      String student_id = routingContext.request().getParam(RouteConstants.STUDENT_ID);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_DCA_RUBRIC_QUESTIONS_STUDENT_ANSWERS)
+          .addHeader(RouteConstants.QUE_ID, question_id)
+          .addHeader(RouteConstants.STUDENT_ID, student_id);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    // Get Rubric Grading Summary for Question
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/class/{classId}/course/{courseId}/collection/
+    // {collectionId}/question/{question_id}/summary
+    router.get(RouteConstants.DCA_RUBRIC_QUESTION_GRADE_SUMMARY_GET).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+      String question_id = routingContext.request().getParam(RouteConstants.QUE_ID);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_DCA_RUBRIC_QUESTIONS_GRADE_SUMMARY)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_COLLECTION, collectionId)
+          .addHeader(RouteConstants.QUE_ID, question_id);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    // ***************************************************************************************************************************
+
 
   }
 
