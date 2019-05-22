@@ -561,11 +561,11 @@ public final class RouteConstants {
           + ENTITY_STUDENTS + SEP + COLON + STUDENT_ID + SEP + ENTITY_ANSWERS;
 
   // Get Rubric Grading Summary for Question
-  // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/class/{classId}/course/{courseId}/collection/
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/class/{classId}/collection/
   // {collectionId}/question/{question_id}/summary
   public static final String DCA_RUBRIC_QUESTION_GRADE_SUMMARY_GET =
-      API_BASE_ROUTE + DCA + SEP + RUBRICS + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSE
-          + SEP + COLON + ID_COURSE + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP
+      API_BASE_ROUTE + DCA + SEP + RUBRICS + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP 
+      + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP
           + ENTITY_QUESTION + SEP + COLON + QUE_ID + SEP + SUMMARY;
 
   // *************** DCA RUBRICS GRADING********************************************************************
