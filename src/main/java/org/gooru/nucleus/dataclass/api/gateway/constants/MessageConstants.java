@@ -176,6 +176,9 @@ public final class MessageConstants {
   public static final String MSG_OP_DCA_RUBRIC_QUESTIONS_GRADE_SUMMARY =
       "dca.rubric.questions.grade.summary";
 
+  // DCA OA Grading
+  public static final String MSG_OP_DCA_OAS_TO_GRADE = "dca.oa.to.grade";
+  public static final String MSG_OP_DCA_OAS_STUDENTS_LIST = "dca.oa.students.list";
 
   private MessageConstants() {
     throw new AssertionError();

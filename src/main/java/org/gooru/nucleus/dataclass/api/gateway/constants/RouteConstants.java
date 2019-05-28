@@ -82,6 +82,7 @@ public final class RouteConstants {
   private static final String ACTIVITIES = "activities";
   private static final String LEARNERS = "learners";
   public static final String COLLECTION_TYPE = "collectionType";
+  private static final String OA = "oa";
 
 
   // public static final String CLASS_ID = "classId";
@@ -568,8 +569,18 @@ public final class RouteConstants {
       + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP
           + ENTITY_QUESTION + SEP + COLON + QUE_ID + SEP + SUMMARY;
 
-  // *************** DCA RUBRICS GRADING********************************************************************
-  
+  // *************** DCA OA GRADING********************************************************************
+  // Get OA pending grading
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}
+  public static final String DCA_OAS_TO_GRADE_GET =
+      API_BASE_ROUTE + DCA + SEP + OA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS;
+
+  // Get list of Students for a OA to be graded
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}/collection/{collectionId}/students
+  public static final String DCA_OA_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + DCA + SEP + OA
+      + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + ENTITY_STUDENTS;
+
+  // ******************************************************************************************************************************
 
   private RouteConstants() {
     throw new AssertionError();

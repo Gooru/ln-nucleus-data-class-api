@@ -1001,8 +1001,36 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
-    // ***************************************************************************************************************************
+    // ***************DCA OA GRADING FLOW*************************************************************************************
+    
+    // Get OA pending grading
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}
+    router.get(RouteConstants.DCA_OAS_TO_GRADE_GET)
+    .handler(routingContext -> {
+    	String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+    	DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(
+          MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_OAS_TO_GRADE)
+              .addHeader(RouteConstants.ID_CLASS, classId);
+    	eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
 
+    // Get list of Students for a OA to be graded
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}/collection/{collectionId}/students
+    router.get(RouteConstants.DCA_OA_TO_GRADE_LIST_STUDENTS_GET)
+        .handler(routingContext -> {
+            String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_DCA_OAS_STUDENTS_LIST)
+              .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+          eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+              new RouteRequestUtility().getBodyForMessage(routingContext), options,
+              reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+     });
+    
+    // ********************************************************************************************************************************
 
   }
 
