@@ -1020,15 +1020,34 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
     // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}/collection/{collectionId}/students
     router.get(RouteConstants.DCA_OA_TO_GRADE_LIST_STUDENTS_GET)
         .handler(routingContext -> {
-            String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
               .addHeader(MessageConstants.MSG_HEADER_OP,
                   MessageConstants.MSG_OP_DCA_OAS_STUDENTS_LIST)
+              .addHeader(RouteConstants.ID_CLASS, classId)
               .addHeader(RouteConstants.ID_COLLECTION, collectionId);
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
               new RouteRequestUtility().getBodyForMessage(routingContext), options,
               reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
      });
+    
+    // Get Submissions for OA Grading
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{class_id}/collections/{collection_id}/students/{student_id}/answers
+    router.get(RouteConstants.DCA_OA_STUDENT_SUBMISSIONS_GET).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+      String studentId = routingContext.request().getParam(RouteConstants.STUDENT_ID);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_DCA_OA_STUDENT_SUBMISSIONS)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_COLLECTION, collectionId)
+          .addHeader(RouteConstants.STUDENT_ID, studentId);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
     
     // ********************************************************************************************************************************
 

@@ -118,6 +118,8 @@ public final class RouteConstants {
   private static final String ENTITY_STUDENT = "student";
   private static final String COMPLETION = "completion";
   private static final String COMPETENCY = "competency";
+  private static final String ENTITY_SUBMISSIONS = "submissions";
+
 
   private static final String ATC = "atc";
   private static final String PERF_VS_COMP = "pvc";
@@ -579,6 +581,12 @@ public final class RouteConstants {
   // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}/collection/{collectionId}/students
   public static final String DCA_OA_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + DCA + SEP + OA
       + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + ENTITY_STUDENTS;
+  
+  // Get Student Submissions for OA Grading
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{class_id}/collection/{collection_id}/student/{student_id}/submissions
+  public static final String DCA_OA_STUDENT_SUBMISSIONS_GET =
+      API_BASE_ROUTE + DCA + SEP + OA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP
+          + ENTITY_STUDENT + SEP + COLON + STUDENT_ID + SEP + ENTITY_SUBMISSIONS;
 
   // ******************************************************************************************************************************
 
