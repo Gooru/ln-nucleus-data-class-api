@@ -1004,29 +1004,27 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
     // ***************DCA OA GRADING FLOW*************************************************************************************
     
     // Get OA pending grading
-    // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}
-    router.get(RouteConstants.DCA_OAS_TO_GRADE_GET)
+    // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/items/
+    router.get(RouteConstants.ITEMS_TO_GRADE_GET)
     .handler(routingContext -> {
-    	String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+    	//String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
     	DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(
-          MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DCA_OAS_TO_GRADE)
-              .addHeader(RouteConstants.ID_CLASS, classId);
+          MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ITEMS_TO_GRADE);
     	eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
           new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
     // Get list of Students for a OA to be graded
-    // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}/collection/{collectionId}/students
-    router.get(RouteConstants.DCA_OA_TO_GRADE_LIST_STUDENTS_GET)
+    // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/items/{itemId}/students
+    router.get(RouteConstants.ITEMS_TO_GRADE_LIST_STUDENTS_GET)
         .handler(routingContext -> {
-          String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-          String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+          //String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+          String itemId = routingContext.request().getParam(RouteConstants.ID_ITEM);
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
               .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_DCA_OAS_STUDENTS_LIST)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+                  MessageConstants.MSG_OP_ITEMS_TO_GRADE_STUDENTS_LIST)
+              .addHeader(RouteConstants.ID_ITEM, itemId);
           eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
               new RouteRequestUtility().getBodyForMessage(routingContext), options,
               reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
@@ -1036,14 +1034,14 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
     // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{class_id}/collections/{collection_id}/students/{student_id}/answers
     router.get(RouteConstants.DCA_OA_STUDENT_SUBMISSIONS_GET).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-      String studentId = routingContext.request().getParam(RouteConstants.STUDENT_ID);
+      String oaId = routingContext.request().getParam(RouteConstants.ID_OA);
+      String studentId = routingContext.request().getParam(RouteConstants.ID_STUDENT);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
           .addHeader(MessageConstants.MSG_HEADER_OP,
               MessageConstants.MSG_OP_DCA_OA_STUDENT_SUBMISSIONS)
           .addHeader(RouteConstants.ID_CLASS, classId)
-          .addHeader(RouteConstants.ID_COLLECTION, collectionId)
-          .addHeader(RouteConstants.STUDENT_ID, studentId);
+          .addHeader(RouteConstants.ID_OA, oaId)
+          .addHeader(RouteConstants.ID_STUDENT, studentId);
       eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
           new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));

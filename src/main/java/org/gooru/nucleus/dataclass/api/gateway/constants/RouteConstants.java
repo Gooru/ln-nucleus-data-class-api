@@ -30,6 +30,10 @@ public final class RouteConstants {
   public static final String ID_SESSION = "sessionId";
   public static final String REPORT = "report";
   public static final String ID_MILESTONE = "milestoneId";
+  public static final String ID_ITEM = "itemId";
+  public static final String ID_OA = "oaId";
+  public static final String ID_STUDENT = "studentId";
+  
 
   public static final String START_DATE = "startDate";
   public static final String END_DATE = "endDate";
@@ -59,6 +63,7 @@ public final class RouteConstants {
   private static final String ENTITY_LESSON = "lesson";
   private static final String ENTITY_ITEMS = "items";
   private static final String ENTITY_MILESTONE = "milestone";
+  private static final String ENTITY_OA = "oa";
 
   // Class Reports - Write/Read APIs
   private static final String LOCATION = "location";
@@ -82,7 +87,7 @@ public final class RouteConstants {
   private static final String ACTIVITIES = "activities";
   private static final String LEARNERS = "learners";
   public static final String COLLECTION_TYPE = "collectionType";
-  private static final String OA = "oa";
+  //private static final String OA = "oa";
 
 
   // public static final String CLASS_ID = "classId";
@@ -573,20 +578,20 @@ public final class RouteConstants {
 
   // *************** DCA OA GRADING********************************************************************
   // Get OA pending grading
-  // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}
-  public static final String DCA_OAS_TO_GRADE_GET =
-      API_BASE_ROUTE + DCA + SEP + OA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS;
+  // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/items/
+  public static final String ITEMS_TO_GRADE_GET =
+      API_BASE_ROUTE + RUBRICS + SEP + ENTITY_ITEMS;
 
   // Get list of Students for a OA to be graded
-  // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{classId}/collection/{collectionId}/students
-  public static final String DCA_OA_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + DCA + SEP + OA
-      + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP + ENTITY_STUDENTS;
+  // {REST_END_POINT}"/api/nucleus-insights/v2/rubrics/items/{itemId}/students
+  public static final String ITEMS_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_ITEMS
+      + SEP + COLON + ID_ITEM + SEP + ENTITY_STUDENTS;
   
   // Get Student Submissions for OA Grading
-  // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{class_id}/collection/{collection_id}/student/{student_id}/submissions
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classId}/oa/{oaId}/student/{studentId}/submissions
   public static final String DCA_OA_STUDENT_SUBMISSIONS_GET =
-      API_BASE_ROUTE + DCA + SEP + OA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP
-          + ENTITY_STUDENT + SEP + COLON + STUDENT_ID + SEP + ENTITY_SUBMISSIONS;
+      API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP
+          + ENTITY_STUDENT + SEP + COLON + ID_STUDENT + SEP + ENTITY_SUBMISSIONS;
 
   // ******************************************************************************************************************************
 
