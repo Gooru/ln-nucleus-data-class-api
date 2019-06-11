@@ -30,6 +30,10 @@ public final class RouteConstants {
   public static final String ID_SESSION = "sessionId";
   public static final String REPORT = "report";
   public static final String ID_MILESTONE = "milestoneId";
+  public static final String ID_ITEM = "itemId";
+  public static final String ID_OA = "oaId";
+  public static final String ID_STUDENT = "studentId";
+  
 
   public static final String START_DATE = "startDate";
   public static final String END_DATE = "endDate";
@@ -59,6 +63,7 @@ public final class RouteConstants {
   private static final String ENTITY_LESSON = "lesson";
   private static final String ENTITY_ITEMS = "items";
   private static final String ENTITY_MILESTONE = "milestone";
+  private static final String ENTITY_OA = "oa";
 
   // Class Reports - Write/Read APIs
   private static final String LOCATION = "location";
@@ -82,6 +87,7 @@ public final class RouteConstants {
   private static final String ACTIVITIES = "activities";
   private static final String LEARNERS = "learners";
   public static final String COLLECTION_TYPE = "collectionType";
+  //private static final String OA = "oa";
 
 
   // public static final String CLASS_ID = "classId";
@@ -117,6 +123,8 @@ public final class RouteConstants {
   private static final String ENTITY_STUDENT = "student";
   private static final String COMPLETION = "completion";
   private static final String COMPETENCY = "competency";
+  private static final String ENTITY_SUBMISSIONS = "submissions";
+
 
   private static final String ATC = "atc";
   private static final String PERF_VS_COMP = "pvc";
@@ -450,8 +458,8 @@ public final class RouteConstants {
   public static final String DCA_ALL_CLASSES_PERFORMANCE =
       API_BASE_ROUTE + DCA + SEP + CLASSES + SEP + PERFORMANCE;
 
-  // *************** RUBRICS
-  // GRADING********************************************************************************
+
+  // *********** Course Map RUBRICS GRADING***********************************************************************
 
   // Get Questions pending grading
   // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/questions
@@ -477,9 +485,7 @@ public final class RouteConstants {
           + SEP + COLON + ID_COURSE + SEP + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP
           + ENTITY_QUESTION + SEP + COLON + QUE_ID + SEP + SUMMARY;
 
-
-  // *************** RUBRICS
-  // GRADING********************************************************************************
+  // *************************************************************************************************************
 
   // Data Reports for NU
   // {REST_END_POINT}/api/nucleus-insights/v3/student/performance
@@ -543,6 +549,51 @@ public final class RouteConstants {
   public static final String MILESTONE_LESSON_IND_LEARNER_PERF_GET =
       API_BASE_ROUTE + ENTITY_COURSE + SEP + COLON + ID_COURSE + SEP + ENTITY_MILESTONE + SEP
           + COLON + ID_MILESTONE + SEP + LEARNER + SEP + PERFORMANCE;
+  
+  // *************** DCA RUBRICS GRADING********************************************************************
+  
+  // Get Questions pending grading
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/questions
+  public static final String DCA_RUBRICS_QUESTIONS_TO_GRADE_GET =
+      API_BASE_ROUTE + DCA + SEP + RUBRICS + SEP + ENTITY_QUESTIONS;
+
+  // Get list of Students for a Question to be graded
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/questions/{question_id}/students
+  public static final String DCA_RUBRIC_QUESTION_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + DCA + SEP + RUBRICS
+      + SEP + ENTITY_QUESTIONS + SEP + COLON + QUE_ID + SEP + ENTITY_STUDENTS;
+
+  // Get Answer for Rubric Grading
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/questions/{question_id}/students/{student_id}/answers
+  public static final String DCA_RUBRIC_QUESTION_STUDENT_ANSWERS_GET =
+      API_BASE_ROUTE + DCA + SEP + RUBRICS + SEP + ENTITY_QUESTIONS + SEP + COLON + QUE_ID + SEP
+          + ENTITY_STUDENTS + SEP + COLON + STUDENT_ID + SEP + ENTITY_ANSWERS;
+
+  // Get Rubric Grading Summary for Question
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/rubrics/class/{classId}/collection/
+  // {collectionId}/question/{question_id}/summary
+  public static final String DCA_RUBRIC_QUESTION_GRADE_SUMMARY_GET =
+      API_BASE_ROUTE + DCA + SEP + RUBRICS + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP 
+      + ENTITY_COLLECTION + SEP + COLON + ID_COLLECTION + SEP
+          + ENTITY_QUESTION + SEP + COLON + QUE_ID + SEP + SUMMARY;
+
+  // *************** DCA OA GRADING********************************************************************
+  // Get OA pending grading
+  // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/items/
+  public static final String ITEMS_TO_GRADE_GET =
+      API_BASE_ROUTE + RUBRICS + SEP + ENTITY_ITEMS;
+
+  // Get list of Students for a OA to be graded
+  // {REST_END_POINT}"/api/nucleus-insights/v2/rubrics/items/{itemId}/students
+  public static final String ITEMS_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_ITEMS
+      + SEP + COLON + ID_ITEM + SEP + ENTITY_STUDENTS;
+  
+  // Get Student Submissions for OA Grading
+  // {REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classId}/oa/{oaId}/student/{studentId}/submissions
+  public static final String DCA_OA_STUDENT_SUBMISSIONS_GET =
+      API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP
+          + ENTITY_STUDENT + SEP + COLON + ID_STUDENT + SEP + ENTITY_SUBMISSIONS;
+
+  // ******************************************************************************************************************************
 
   private RouteConstants() {
     throw new AssertionError();
