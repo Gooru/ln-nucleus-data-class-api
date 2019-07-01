@@ -87,6 +87,7 @@ public final class RouteConstants {
   private static final String ACTIVITIES = "activities";
   private static final String LEARNERS = "learners";
   public static final String COLLECTION_TYPE = "collectionType";
+  private static final String ITEM = "item";
   //private static final String OA = "oa";
 
 
@@ -592,7 +593,12 @@ public final class RouteConstants {
   public static final String DCA_OA_STUDENT_SUBMISSIONS_GET =
       API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP
           + ENTITY_STUDENT + SEP + COLON + ID_STUDENT + SEP + ENTITY_SUBMISSIONS;
-
+  
+  // Get list of Students whose OA is marked complete by students
+  // {REST_END_POINT}"/api/nucleus-insights/v2/dca/class/{classId}/oa/{oaId}/item/{itemId}/students
+	public static final String LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP
+			+ COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP + ITEM + SEP + COLON + ID_ITEM + SEP + ENTITY_STUDENTS;
+  
   // ******************************************************************************************************************************
 
   private RouteConstants() {
