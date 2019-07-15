@@ -1047,6 +1047,21 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
     
+    router.get(RouteConstants.LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS).handler(routingContext -> {
+        String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+        String oaId = routingContext.request().getParam(RouteConstants.ID_OA);
+        String itemId = routingContext.request().getParam(RouteConstants.ID_ITEM);
+        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+            .addHeader(MessageConstants.MSG_HEADER_OP,
+                MessageConstants.MSG_OP_DCA_OA_COMPLETE_BY_STUDENT_LIST)
+            .addHeader(RouteConstants.ID_CLASS, classId)
+            .addHeader(RouteConstants.ID_OA, oaId)
+            .addHeader(RouteConstants.ID_ITEM, itemId);
+        eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+            new RouteRequestUtility().getBodyForMessage(routingContext), options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });    
+    
     // ********************************************************************************************************************************
 
   }
