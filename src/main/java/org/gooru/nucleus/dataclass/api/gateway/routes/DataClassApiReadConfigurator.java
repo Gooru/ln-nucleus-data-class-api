@@ -1007,7 +1007,6 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
     // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/items/
     router.get(RouteConstants.ITEMS_TO_GRADE_GET)
     .handler(routingContext -> {
-    	//String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
     	DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(
           MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ITEMS_TO_GRADE);
     	eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
@@ -1017,9 +1016,8 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
 
     // Get list of Students for a OA to be graded
     // {REST_END_POINT}/api/nucleus-insights/v2/rubrics/items/{itemId}/students
-    router.get(RouteConstants.ITEMS_TO_GRADE_LIST_STUDENTS_GET)
+    router.get(RouteConstants.GET_ITEMS_TO_GRADE_STUDENTS_LIST)
         .handler(routingContext -> {
-          //String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
           String itemId = routingContext.request().getParam(RouteConstants.ID_ITEM);
           DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
               .addHeader(MessageConstants.MSG_HEADER_OP,
@@ -1031,8 +1029,8 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
      });
     
     // Get Submissions for OA Grading
-    // {REST_END_POINT}/api/nucleus-insights/v2/dca/oa/class/{class_id}/collections/{collection_id}/students/{student_id}/answers
-    router.get(RouteConstants.DCA_OA_STUDENT_SUBMISSIONS_GET).handler(routingContext -> {
+    // {REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classId}/oa/{oaId}/student/{studentId}/submissions
+    router.get(RouteConstants.DCA_OA_GET_STUDENT_SUBMISSIONS).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String oaId = routingContext.request().getParam(RouteConstants.ID_OA);
       String studentId = routingContext.request().getParam(RouteConstants.ID_STUDENT);
@@ -1047,7 +1045,7 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
     
-    router.get(RouteConstants.LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS).handler(routingContext -> {
+    router.get(RouteConstants.DCA_LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS).handler(routingContext -> {
         String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
         String oaId = routingContext.request().getParam(RouteConstants.ID_OA);
         String itemId = routingContext.request().getParam(RouteConstants.ID_ITEM);
@@ -1060,7 +1058,36 @@ class DataClassApiReadConfigurator implements RouteConfigurator {
         eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
             new RouteRequestUtility().getBodyForMessage(routingContext), options,
             reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
-      });    
+      });
+    
+	// {REST_END_POINT}/api/nucleus-insights/v2/class/{classId}/oa/{oaId}/student/{studentId}/submissions
+    router.get(RouteConstants.CM_OA_GET_STUDENT_SUBMISSIONS).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String oaId = routingContext.request().getParam(RouteConstants.ID_OA);
+      String studentId = routingContext.request().getParam(RouteConstants.ID_STUDENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_CM_OA_STUDENT_SUBMISSIONS)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_OA, oaId)
+          .addHeader(RouteConstants.ID_STUDENT, studentId);
+      eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+    
+    router.get(RouteConstants.CM_LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS).handler(routingContext -> {
+        String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+        String oaId = routingContext.request().getParam(RouteConstants.ID_OA);
+        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+            .addHeader(MessageConstants.MSG_HEADER_OP,
+                MessageConstants.MSG_OP_CM_OA_COMPLETE_BY_STUDENT_LIST)
+            .addHeader(RouteConstants.ID_CLASS, classId)
+            .addHeader(RouteConstants.ID_OA, oaId);
+        eb.send(MessagebusEndpoints.MBEP_DATACLASS_API,
+            new RouteRequestUtility().getBodyForMessage(routingContext), options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+      });
     
     // ********************************************************************************************************************************
 
