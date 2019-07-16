@@ -183,6 +183,8 @@ public final class MessageConstants {
   //Offline-Actvities
   public static final String MSG_OP_DCA_OA_STUDENT_SUBMISSIONS = "dca.oa.student.submissions";
   public static final String MSG_OP_DCA_OA_COMPLETE_BY_STUDENT_LIST = "dca.oa.complete.by.students.list";
+  public static final String MSG_OP_CM_OA_STUDENT_SUBMISSIONS = "cm.oa.student.submissions";
+  public static final String MSG_OP_CM_OA_COMPLETE_BY_STUDENT_LIST = "cm.oa.complete.by.students.list";
 
   private MessageConstants() {
     throw new AssertionError();

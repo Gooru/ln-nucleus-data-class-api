@@ -585,20 +585,31 @@ public final class RouteConstants {
 
   // Get list of Students for a OA to be graded
   // {REST_END_POINT}"/api/nucleus-insights/v2/rubrics/items/{itemId}/students
-  public static final String ITEMS_TO_GRADE_LIST_STUDENTS_GET = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_ITEMS
+  public static final String GET_ITEMS_TO_GRADE_STUDENTS_LIST = API_BASE_ROUTE + RUBRICS + SEP + ENTITY_ITEMS
       + SEP + COLON + ID_ITEM + SEP + ENTITY_STUDENTS;
   
   // Get Student Submissions for OA Grading
   // {REST_END_POINT}/api/nucleus-insights/v2/dca/class/{classId}/oa/{oaId}/student/{studentId}/submissions
-  public static final String DCA_OA_STUDENT_SUBMISSIONS_GET =
+  public static final String DCA_OA_GET_STUDENT_SUBMISSIONS =
       API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP + COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP
           + ENTITY_STUDENT + SEP + COLON + ID_STUDENT + SEP + ENTITY_SUBMISSIONS;
   
   // Get list of Students whose OA is marked complete by students
   // {REST_END_POINT}"/api/nucleus-insights/v2/dca/class/{classId}/oa/{oaId}/item/{itemId}/students
-	public static final String LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP
+	public static final String DCA_LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS = API_BASE_ROUTE + DCA + SEP + ENTITY_CLASS + SEP
 			+ COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP + ITEM + SEP + COLON + ID_ITEM + SEP + ENTITY_STUDENTS;
-  
+
+	// Get Student Submissions for OA Grading
+	// {REST_END_POINT}/api/nucleus-insights/v2/class/{classId}/oa/{oaId}/student/{studentId}/submissions
+	public static final String CM_OA_GET_STUDENT_SUBMISSIONS = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON + ID_CLASS
+			+ SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP + ENTITY_STUDENT + SEP + COLON + ID_STUDENT + SEP
+			+ ENTITY_SUBMISSIONS;
+
+	// Get list of Students whose OA is marked complete by students
+	// {REST_END_POINT}"/api/nucleus-insights/v2/class/{classId}/oa/{oaId}/students
+	public static final String CM_LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS = API_BASE_ROUTE + ENTITY_CLASS
+			+ SEP + COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP + ENTITY_STUDENTS;
+
   // ******************************************************************************************************************************
 
   private RouteConstants() {
