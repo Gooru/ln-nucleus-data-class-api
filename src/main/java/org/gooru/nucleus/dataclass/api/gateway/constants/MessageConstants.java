@@ -186,6 +186,9 @@ public final class MessageConstants {
   public static final String MSG_OP_CM_OA_STUDENT_SUBMISSIONS = "cm.oa.student.submissions";
   public static final String MSG_OP_CM_OA_COMPLETE_BY_STUDENT_LIST = "cm.oa.complete.by.students.list";
 
+  //Suggestions performance
+  public static final String MSG_OP_STUD_PERFORMANCE_ON_SUGGESTIONS = "student.items.suggestion.performance";
+
   private MessageConstants() {
     throw new AssertionError();
   }

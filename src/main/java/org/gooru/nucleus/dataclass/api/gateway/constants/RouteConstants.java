@@ -125,7 +125,7 @@ public final class RouteConstants {
   private static final String COMPLETION = "completion";
   private static final String COMPETENCY = "competency";
   private static final String ENTITY_SUBMISSIONS = "submissions";
-
+  private static final String SUGGESTIONS = "suggestions";
 
   private static final String ATC = "atc";
   private static final String PERF_VS_COMP = "pvc";
@@ -610,7 +610,11 @@ public final class RouteConstants {
 	public static final String CM_LIST_STUDENTS_OF_ITEMS_MARKED_COMPLETE_BY_STUDENTS = API_BASE_ROUTE + ENTITY_CLASS
 			+ SEP + COLON + ID_CLASS + SEP + ENTITY_OA + SEP + COLON + ID_OA + SEP + ENTITY_STUDENTS;
 
-  // ******************************************************************************************************************************
+  // *******************STUDENT PERFORMANCE ON SUGGESTIONS***************************************************************************
+
+	// Get Students performance on suggestions
+	// {REST_END_POINT}"/api/nucleus-insights/v2/suggestions/performance
+	public static final String STUDENTS_PERFORMANCE_ON_SUGGESTIONS = API_BASE_ROUTE + SUGGESTIONS + SEP + PERFORMANCE;
 
   private RouteConstants() {
     throw new AssertionError();
