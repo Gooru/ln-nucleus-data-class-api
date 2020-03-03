@@ -151,6 +151,11 @@ public final class RouteConstants {
   // {REST_END_POINT}//api/nucleus-insights/v2/class/{classGooruId}/user/{userUid}/current/location
   public static final String CURRENT_LOC_GET = API_BASE_ROUTE + ENTITY_CLASS + SEP + COLON
       + ID_CLASS + SEP + ENTITY_USER + SEP + COLON + UID_USER + SEP + CURRENT + SEP + LOCATION;
+  
+//GetCurrentLocation (getUserCurrentLocationInLesson)
+ // {REST_END_POINT}//api/nucleus-insights/v2/user/{userUid}/collection/{collectionId}/current/location
+ public static final String CURRENT_RESOURCE_LOC_GET = API_BASE_ROUTE + ENTITY_USER + SEP + COLON + UID_USER + SEP + ENTITY_COLLECTION
+     + SEP + COLON + ID_COLLECTION + SEP + CURRENT + SEP + LOCATION;
 
 
   // Get Student Course Performance (getCoursePeformance)
